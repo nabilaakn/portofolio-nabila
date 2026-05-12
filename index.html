@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Nabila Rahadatul Aisy — Portfolio</title>
+<title>Nabila Rahadatul — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -15,22 +15,13 @@
     --border: rgba(255,255,255,0.08);
     --text: #f0eee8;
     --muted: #888899;
-    --accent: #c8a96e;
-    --accent2: #7c6fcd;
-    --accent3: #5ecfb1;
-    --accent4: #e87b6a;
-    /* Role colors */
-    --pm-color: #c8a96e;
-    --da-color: #5ecfb1;
-    --ux-color: #b07ef5;
-    --hr-color: #e87b6a;
-    --role-color: var(--pm-color);
+    --accent: #5ecfb1;
+    --accent2: #c8a96e;
+    --accent3: #b07ef5;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--bg);
     color: var(--text);
@@ -40,7 +31,6 @@
     overflow-x: hidden;
   }
 
-  /* ========== NOISE OVERLAY ========== */
   body::before {
     content: '';
     position: fixed;
@@ -51,18 +41,16 @@
     opacity: 0.4;
   }
 
-  /* ========== SCROLL PROGRESS ========== */
   #progress-bar {
     position: fixed;
     top: 0; left: 0;
     height: 2px;
-    background: var(--role-color);
+    background: linear-gradient(90deg, var(--accent), var(--accent3), var(--accent2));
     width: 0%;
     z-index: 1000;
-    transition: width 0.1s, background 0.5s;
+    transition: width 0.1s;
   }
 
-  /* ========== NAV ========== */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -80,17 +68,13 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--role-color);
-    transition: color 0.5s;
-    letter-spacing: 0.01em;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
     color: var(--muted);
     text-decoration: none;
@@ -100,39 +84,9 @@
     text-transform: uppercase;
     transition: color 0.3s;
   }
+  .nav-links a:hover { color: var(--accent); }
 
-  .nav-links a:hover { color: var(--role-color); }
-
-  /* ========== ROLE SWITCHER ========== */
-  .role-switcher {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-  }
-
-  .role-btn {
-    padding: 0.35rem 0.9rem;
-    border-radius: 100px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--muted);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s;
-    letter-spacing: 0.04em;
-  }
-
-  .role-btn:hover { border-color: var(--role-color); color: var(--role-color); }
-  .role-btn.active {
-    background: var(--role-color);
-    border-color: var(--role-color);
-    color: #0a0a0f;
-    font-weight: 600;
-  }
-
-  /* ========== HERO ========== */
+  /* ===== HERO ===== */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -141,841 +95,390 @@
     position: relative;
     overflow: hidden;
   }
-
   .hero-bg {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(200,169,110,0.08) 0%, transparent 70%);
-    transition: background 0.8s;
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(94,207,177,0.07) 0%, transparent 55%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, rgba(176,126,245,0.05) 0%, transparent 55%);
   }
-
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 700px;
-  }
-
+  .hero-content { position: relative; z-index: 1; max-width: 680px; }
   .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.78rem;
-    color: var(--role-color);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: 'DM Mono', monospace; font-size: 0.78rem;
+    color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase;
     margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
-    transition: color 0.5s;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
   }
-
-  .hero-eyebrow::before {
-    content: '';
-    width: 2rem;
-    height: 1px;
-    background: var(--role-color);
-    transition: background 0.5s;
-  }
-
+  .hero-eyebrow::before { content: ''; width: 2rem; height: 1px; background: var(--accent); }
   .hero-name {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 7vw, 5.5rem);
-    font-weight: 900;
-    line-height: 1.05;
-    margin-bottom: 0.8rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.35s forwards;
+    font-size: clamp(2.6rem, 6.5vw, 5rem);
+    font-weight: 900; line-height: 1.05; margin-bottom: 0.8rem;
+    opacity: 0; animation: fadeUp 0.8s 0.35s forwards;
+    white-space: nowrap;
   }
-
-  .hero-name .accent { color: var(--role-color); transition: color 0.5s; }
-
-  .hero-role-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.2rem, 3vw, 2rem);
-    font-style: italic;
+  .hero-name .accent { color: var(--accent); }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.8rem;
+    opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+  }
+  .hero-tag {
+    padding: 0.3rem 0.9rem; border-radius: 100px;
+    border: 1px solid var(--border); font-size: 0.8rem;
+    font-family: 'DM Mono', monospace; letter-spacing: 0.04em;
     color: var(--muted);
-    margin-bottom: 1.8rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.5s forwards;
-    min-height: 2.2rem;
   }
-
+  .hero-tag.t1 { border-color: rgba(94,207,177,0.4); color: var(--accent); background: rgba(94,207,177,0.08); }
+  .hero-tag.t2 { border-color: rgba(200,169,110,0.4); color: var(--accent2); background: rgba(200,169,110,0.08); }
+  .hero-tag.t3 { border-color: rgba(176,126,245,0.4); color: var(--accent3); background: rgba(176,126,245,0.08); }
+  .hero-tag.t4 { border-color: rgba(232,123,106,0.4); color: #e87b6a; background: rgba(232,123,106,0.08); }
   .hero-desc {
-    font-size: 1rem;
-    color: var(--muted);
-    max-width: 520px;
-    line-height: 1.75;
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.65s forwards;
+    font-size: 1rem; color: var(--muted); max-width: 520px;
+    line-height: 1.75; margin-bottom: 2.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
   }
-
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.8s forwards;
-  }
-
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
   .btn-primary {
-    padding: 0.85rem 2rem;
-    background: var(--role-color);
-    color: #0a0a0f;
-    border: none;
-    border-radius: 6px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    font-size: 0.88rem;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s;
-    letter-spacing: 0.04em;
+    padding: 0.85rem 2rem; background: var(--accent); color: #0a0a0f;
+    border: none; border-radius: 6px; font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 0.88rem; cursor: pointer;
+    text-decoration: none; transition: all 0.3s; letter-spacing: 0.04em;
   }
-
   .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
-
   .btn-outline {
-    padding: 0.85rem 2rem;
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    font-size: 0.88rem;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s;
+    padding: 0.85rem 2rem; background: transparent; color: var(--text);
+    border: 1px solid var(--border); border-radius: 6px;
+    font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.88rem;
+    cursor: pointer; text-decoration: none; transition: all 0.3s;
   }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
-  .btn-outline:hover { border-color: var(--role-color); color: var(--role-color); }
-
-  /* Floating stat badges */
-  .hero-stats {
-    position: absolute;
-    right: 5%;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    opacity: 0;
-    animation: fadeLeft 0.8s 1s forwards;
+  .hero-photo-wrap {
+    position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 1.2rem;
+    opacity: 0; animation: fadeLeft 0.8s 1s forwards;
   }
-
+  .hero-photo {
+    width: 260px; height: 340px; border-radius: 24px;
+    object-fit: cover; object-position: center top;
+    border: 2px solid var(--accent);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+    transition: all 0.4s ease; display: block; background: var(--surface);
+  }
+  .hero-photo:hover { transform: translateY(-4px); }
+  .hero-stats-mini { display: flex; gap: 0.8rem; }
   .stat-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.2rem 1.6rem;
-    text-align: center;
-    min-width: 120px;
-    border-left: 3px solid var(--role-color);
-    transition: border-color 0.5s;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1rem 1.2rem; text-align: center;
+    min-width: 90px; border-left: 3px solid var(--accent);
   }
-
   .stat-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: var(--role-color);
-    transition: color 0.5s;
-    display: block;
+    font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900;
+    color: var(--accent); display: block;
   }
+  .stat-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
-  .stat-label {
-    font-size: 0.72rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  /* ========== SECTION BASE ========== */
-  section {
-    padding: 6rem 5%;
-  }
-
+  /* ===== SECTION BASE ===== */
+  section { padding: 6rem 5%; }
   .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--role-color);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    font-family: 'DM Mono', monospace; font-size: 0.75rem;
+    color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
     margin-bottom: 0.8rem;
-    transition: color 0.5s;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
+    display: flex; align-items: center; gap: 0.6rem;
   }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    max-width: 3rem;
-    height: 1px;
-    background: var(--role-color);
-    transition: background 0.5s;
-  }
-
+  .section-label::after { content: ''; flex: 1; max-width: 3rem; height: 1px; background: var(--accent); }
   .section-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 3rem;
+    font-weight: 700; line-height: 1.2; margin-bottom: 3rem;
   }
 
-  /* ========== ABOUT ========== */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
+  /* ===== ABOUT ===== */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1.2rem; }
+  .about-highlights { display: flex; flex-direction: column; gap: 1.2rem; }
+  .highlight-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.2rem; transition: border-color 0.3s;
   }
+  .highlight-item:hover { border-color: var(--accent); }
+  .highlight-item h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.2rem; }
+  .highlight-item p { font-size: 0.8rem; color: var(--muted); }
 
-  .about-text p {
-    color: var(--muted);
-    line-height: 1.8;
-    margin-bottom: 1.2rem;
+  .role-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(94,207,177,0.1); border: 1px solid rgba(94,207,177,0.3);
+    border-radius: 100px; padding: 0.4rem 1rem; font-size: 0.8rem;
+    color: var(--accent); margin-bottom: 2rem; font-weight: 500;
   }
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.6rem;
+  .role-badge .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    animation: pulse 2s infinite;
   }
+  @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
 
-  .skill-tag {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0.5rem 0.9rem;
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
+  .cert-list { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem; }
+  .cert-chip {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.6rem 1rem; font-size: 0.8rem;
+    color: var(--muted); display: flex; align-items: center; gap: 0.5rem;
     transition: all 0.3s;
   }
+  .cert-chip:hover { border-color: var(--accent); color: var(--accent); }
+  a.cert-chip { text-decoration: none; cursor: pointer; }
 
-  .skill-tag:hover {
-    border-color: var(--role-color);
-    color: var(--role-color);
-  }
-
-  .about-highlights {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-
-  .highlight-item {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.2rem;
-    transition: border-color 0.3s;
-  }
-
-  .highlight-item:hover { border-color: var(--role-color); }
-
-  .highlight-icon {
-    width: 36px;
-    height: 36px;
-    background: rgba(200,169,110,0.12);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    flex-shrink: 0;
-    color: var(--role-color);
-    transition: background 0.5s, color 0.5s;
-  }
-
-  .highlight-item h4 {
-    font-size: 0.88rem;
-    font-weight: 600;
-    margin-bottom: 0.2rem;
-  }
-
-  .highlight-item p {
-    font-size: 0.8rem;
-    color: var(--muted);
-  }
-
-  /* ========== ROLE CONTENT ========== */
-  .role-content { display: none; }
-  .role-content.active { display: block; }
-
-  /* ========== EXPERIENCE TIMELINE ========== */
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    position: relative;
-  }
-
+  /* ===== TIMELINE ===== */
+  .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
   .timeline::before {
-    content: '';
-    position: absolute;
-    left: 11px;
-    top: 4px;
-    bottom: 4px;
-    width: 1px;
-    background: var(--border);
+    content: ''; position: absolute;
+    left: 11px; top: 4px; bottom: 4px;
+    width: 1px; background: var(--border);
   }
-
   .timeline-item {
-    display: flex;
-    gap: 2rem;
-    padding-bottom: 2.5rem;
-    position: relative;
-    opacity: 0;
-    transform: translateY(20px);
+    display: flex; gap: 2rem; padding-bottom: 2.5rem; position: relative;
+    opacity: 0; transform: translateY(20px);
     transition: opacity 0.6s, transform 0.6s;
   }
-
-  .timeline-item.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
+  .timeline-item.visible { opacity: 1; transform: translateY(0); }
   .timeline-dot {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--surface);
-    border: 2px solid var(--role-color);
-    flex-shrink: 0;
-    margin-top: 2px;
-    position: relative;
-    z-index: 1;
-    transition: border-color 0.5s;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--surface); border: 2px solid var(--accent);
+    flex-shrink: 0; margin-top: 2px; position: relative; z-index: 1;
   }
-
   .timeline-dot::after {
-    content: '';
-    position: absolute;
-    inset: 3px;
-    border-radius: 50%;
-    background: var(--role-color);
-    transition: background 0.5s;
+    content: ''; position: absolute; inset: 3px;
+    border-radius: 50%; background: var(--accent);
   }
-
   .timeline-body {
-    flex: 1;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: border-color 0.3s;
+    flex: 1; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.5rem; transition: border-color 0.3s;
   }
-
-  .timeline-body:hover { border-color: var(--role-color); }
-
+  .timeline-body:hover { border-color: var(--accent); }
   .timeline-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;
   }
+  .timeline-org { font-size: 0.78rem; color: var(--accent); font-family: 'DM Mono', monospace; letter-spacing: 0.05em; }
+  .timeline-date { font-size: 0.75rem; color: var(--muted); font-family: 'DM Mono', monospace; }
+  .timeline-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.7rem; }
+  .timeline-body ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .timeline-body ul li { font-size: 0.85rem; color: var(--muted); padding-left: 1.2rem; position: relative; line-height: 1.6; }
+  .timeline-body ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
 
-  .timeline-org {
-    font-size: 0.78rem;
-    color: var(--role-color);
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.05em;
-    transition: color 0.5s;
-  }
-
-  .timeline-date {
-    font-size: 0.75rem;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-  }
-
-  .timeline-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.7rem;
-  }
-
-  .timeline-body ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .timeline-body ul li {
-    font-size: 0.85rem;
-    color: var(--muted);
-    padding-left: 1.2rem;
-    position: relative;
-    line-height: 1.6;
-  }
-
-  .timeline-body ul li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--role-color);
-    transition: color 0.5s;
-  }
-
-  /* ========== PROJECTS GRID ========== */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
-  }
-
+  /* ===== PROJECTS ===== */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
   .project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.8rem;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(20px);
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.8rem; position: relative; overflow: hidden;
+    opacity: 0; transform: translateY(20px);
     transition: opacity 0.6s, transform 0.6s, border-color 0.3s, box-shadow 0.3s;
+    display: flex; flex-direction: column;
   }
-
   .project-card.visible { opacity: 1; transform: translateY(0); }
-
   .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
     height: 3px;
-    background: var(--role-color);
-    transition: background 0.5s;
   }
-
-  .project-card:hover {
-    border-color: var(--role-color);
-    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
-    transform: translateY(-4px);
-  }
-
+  .project-card.c-teal::before { background: var(--accent); }
+  .project-card.c-gold::before { background: var(--accent2); }
+  .project-card.c-purple::before { background: var(--accent3); }
+  .project-card.c-coral::before { background: #e87b6a; }
+  .project-card:hover { border-color: rgba(255,255,255,0.15); box-shadow: 0 8px 40px rgba(0,0,0,0.3); transform: translateY(-4px); }
+  .project-card-body { flex: 1; }
   .project-tag {
     display: inline-block;
-    background: rgba(200,169,110,0.12);
-    color: var(--role-color);
-    font-size: 0.72rem;
-    font-family: 'DM Mono', monospace;
-    padding: 0.25rem 0.7rem;
-    border-radius: 100px;
-    margin-bottom: 1rem;
+    font-size: 0.72rem; font-family: 'DM Mono', monospace;
+    padding: 0.25rem 0.7rem; border-radius: 100px; margin-bottom: 1rem;
     letter-spacing: 0.06em;
-    transition: background 0.5s, color 0.5s;
   }
-
-  .project-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.7rem;
-    line-height: 1.3;
-  }
-
-  .project-desc {
-    font-size: 0.83rem;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 1.2rem;
-  }
-
-  .project-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-size: 0.72rem;
-    color: #ffd700;
-    font-weight: 600;
-  }
-
-  .project-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 1rem;
-  }
-
+  .project-tag.teal { background: rgba(94,207,177,0.12); color: var(--accent); }
+  .project-tag.gold { background: rgba(200,169,110,0.12); color: var(--accent2); }
+  .project-tag.purple { background: rgba(176,126,245,0.12); color: var(--accent3); }
+  .project-tag.coral { background: rgba(232,123,106,0.12); color: #e87b6a; }
+  .project-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.7rem; line-height: 1.3; }
+  .project-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+  .project-badge { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; color: #ffd700; font-weight: 600; margin-bottom: 0.8rem; }
+  .project-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
   .chip {
-    background: var(--surface2);
-    color: var(--muted);
-    font-size: 0.7rem;
-    font-family: 'DM Mono', monospace;
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
-    border: 1px solid var(--border);
+    background: var(--surface2); color: var(--muted); font-size: 0.7rem;
+    font-family: 'DM Mono', monospace; padding: 0.2rem 0.6rem;
+    border-radius: 4px; border: 1px solid var(--border);
   }
-
-  /* ========== ACHIEVEMENTS ========== */
-  .achievements-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
+  .project-links {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--border);
   }
-
-  .achievement-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.2rem 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    transition: all 0.3s;
+  .project-link {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.35rem 0.9rem; border-radius: 6px; border: 1px solid var(--border);
+    color: var(--muted); text-decoration: none; font-size: 0.75rem;
+    font-family: 'DM Mono', monospace; transition: all 0.25s; letter-spacing: 0.04em;
   }
+  .project-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(255,255,255,0.04); }
+  .project-link svg { flex-shrink: 0; }
 
-  .achievement-card:hover {
-    border-color: var(--role-color);
-    transform: translateX(4px);
+  /* ===== UX PREVIEW ===== */
+  .ux-preview { margin-bottom: 1rem; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--surface2); position: relative; }
+  .ux-preview img{
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  background: var(--surface2);
+}
+  .ux-preview-placeholder { width: 100%; height: 160px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; background: var(--surface2); color: var(--muted); font-size: 0.72rem; font-family: 'DM Mono', monospace; letter-spacing: 0.06em; }
+  .ux-preview-placeholder svg { width: 32px; height: 32px; opacity: 0.3; stroke: var(--accent3); }
+  .preview-badge { position: absolute; top: 8px; right: 8px; background: rgba(10,10,15,0.75); backdrop-filter: blur(6px); color: var(--accent3); font-size: 0.65rem; font-family: 'DM Mono', monospace; padding: 0.2rem 0.55rem; border-radius: 4px; border: 1px solid rgba(176,126,245,0.3); letter-spacing: 0.06em; }
+
+  /* ===== ORG CARDS ===== */
+  .org-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+  .org-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.6rem; position: relative; overflow: hidden;
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s, border-color 0.3s, box-shadow 0.3s;
   }
-
-  .achievement-icon {
-    font-size: 1.4rem;
-    flex-shrink: 0;
-    width: 40px;
-    text-align: center;
+  .org-card.visible { opacity: 1; transform: translateY(0); }
+  .org-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--accent);
   }
-
-  .achievement-text {
-    font-size: 0.85rem;
-    line-height: 1.4;
+  .org-card:hover { border-color: rgba(255,255,255,0.15); box-shadow: 0 8px 40px rgba(0,0,0,0.3); transform: translateY(-4px); }
+  .org-role-type {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.7rem; font-family: 'DM Mono', monospace;
+    padding: 0.2rem 0.7rem; border-radius: 100px;
+    margin-bottom: 0.8rem; letter-spacing: 0.06em; font-weight: 600;
   }
+  .org-role-type.leader { background: rgba(200,169,110,0.15); color: var(--accent2); }
+  .org-role-type.committee { background: rgba(94,207,177,0.12); color: var(--accent); }
+  .org-role-type.member { background: rgba(176,126,245,0.12); color: var(--accent3); }
+  .org-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; line-height: 1.3; }
+  .org-place { font-size: 0.78rem; color: var(--accent); font-family: 'DM Mono', monospace; margin-bottom: 0.5rem; }
+  .org-date { font-size: 0.72rem; color: var(--muted); font-family: 'DM Mono', monospace; margin-bottom: 0.8rem; }
+  .org-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+  .org-bullets li { font-size: 0.82rem; color: var(--muted); padding-left: 1.1rem; position: relative; line-height: 1.55; }
+  .org-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
 
-  .achievement-text strong {
-    display: block;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 0.1rem;
-  }
+  /* ===== ACHIEVEMENTS ===== */
+  .achievements-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+  .achievement-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; display: flex; align-items: center; gap: 1rem; transition: all 0.3s; }
+  .achievement-card:hover { border-color: rgba(255,255,255,0.15); transform: translateX(4px); }
+  .achievement-icon { font-size: 1.4rem; flex-shrink: 0; width: 40px; text-align: center; }
+  .achievement-text { font-size: 0.85rem; line-height: 1.4; }
+  .achievement-text strong { display: block; font-weight: 600; color: var(--text); margin-bottom: 0.1rem; }
+  .achievement-text span { color: var(--muted); font-size: 0.78rem; }
 
-  .achievement-text span {
-    color: var(--muted);
-    font-size: 0.78rem;
-  }
+  /* ===== SKILLS ===== */
+  .skills-section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 1rem; }
+  .skill-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem; text-align: center; transition: all 0.3s; }
+  .skill-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-3px); }
+  .skill-card-name { font-size: 0.82rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .skill-card-level { font-size: 0.72rem; color: var(--muted); font-family: 'DM Mono', monospace; }
 
-  /* ========== SKILLS SECTION ========== */
-  .skills-section-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 1rem;
-  }
+  /* ===== EDU ===== */
+  .edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 1rem; transition: border-color 0.3s; }
+  .edu-card:hover { border-color: var(--accent); }
+  .edu-icon { font-size: 2rem; flex-shrink: 0; }
+  .edu-degree { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .edu-school { color: var(--accent); font-size: 0.85rem; font-family: 'DM Mono', monospace; margin-bottom: 0.3rem; }
+  .edu-detail { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.15rem; }
 
-  .skill-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.2rem;
-    text-align: center;
-    transition: all 0.3s;
-  }
-
-  .skill-card:hover {
-    border-color: var(--role-color);
-    transform: translateY(-3px);
-  }
-
-  .skill-card-icon {
-    font-size: 1.6rem;
-    margin-bottom: 0.6rem;
-    display: block;
-  }
-
-  .skill-card-name {
-    font-size: 0.82rem;
-    font-weight: 600;
-    margin-bottom: 0.3rem;
-  }
-
-  .skill-card-level {
-    font-size: 0.72rem;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-  }
-
-  /* ========== CONTACT ========== */
+  /* ===== CONTACT ===== */
   .contact-section {
-    background: var(--surface);
-    border-radius: 20px;
-    padding: 4rem;
-    text-align: center;
-    border: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
+    background: var(--surface); border-radius: 20px; padding: 4rem;
+    text-align: center; border: 1px solid var(--border); position: relative; overflow: hidden;
   }
-
   .contact-section::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(200,169,110,0.12) 0%, transparent 70%);
-    transition: background 0.5s;
+    content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%);
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(94,207,177,0.1) 0%, transparent 70%);
   }
+  .contact-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 1rem; position: relative; }
+  .contact-desc { color: var(--muted); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.7; position: relative; }
+  .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+  .contact-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: all 0.3s; font-weight: 500; }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
 
-  .contact-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    position: relative;
+  footer { padding: 2rem 5%; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
+  .divider { height: 1px; background: var(--border); margin: 0 5%; }
+
+  /* ===== PROJ CATEGORY HEADERS ===== */
+  .proj-category {
+    display: flex; align-items: center; gap: 0.8rem;
+    margin-bottom: 1.5rem; margin-top: 3rem;
   }
-
-  .contact-desc {
-    color: var(--muted);
-    max-width: 480px;
-    margin: 0 auto 2.5rem;
-    line-height: 1.7;
-    position: relative;
+  .proj-category:first-child { margin-top: 0; }
+  .proj-category-label {
+    font-family: 'DM Mono', monospace; font-size: 0.75rem;
+    letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600;
+    padding: 0.3rem 0.8rem; border-radius: 100px;
   }
+  .proj-category-label.teal { background: rgba(94,207,177,0.12); color: var(--accent); }
+  .proj-category-label.gold { background: rgba(200,169,110,0.12); color: var(--accent2); }
+  .proj-category-label.purple { background: rgba(176,126,245,0.12); color: var(--accent3); }
+  .proj-category-label.coral { background: rgba(232,123,106,0.12); color: #e87b6a; }
+  .proj-category-line { flex: 1; height: 1px; background: var(--border); }
 
-  .contact-links {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeLeft { from { opacity: 0; transform: translate(20px, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
 
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: all 0.3s;
-    font-weight: 500;
-  }
-
-  .contact-link:hover {
-    border-color: var(--role-color);
-    color: var(--role-color);
-  }
-
-  /* ========== FOOTER ========== */
-  footer {
-    padding: 2rem 5%;
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.8rem;
-    border-top: 1px solid var(--border);
-  }
-
-  /* ========== DIVIDER ========== */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 0 5%;
-  }
-
-  /* ========== ANIMATIONS ========== */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeLeft {
-    from { opacity: 0; transform: translate(20px, -50%); }
-    to { opacity: 1; transform: translate(0, -50%); }
-  }
-
-  /* ========== ROLE THEME TRANSITIONS ========== */
-  [data-role="pm/is"] { --role-color: var(--pm-color); }
-  [data-role="da"] { --role-color: var(--da-color); }
-  [data-role="ux"] { --role-color: var(--ux-color); }
-  [data-role="hr"] { --role-color: var(--hr-color); }
-
-  .role-transition * { transition: color 0.5s, background-color 0.5s, border-color 0.5s !important; }
-
-  /* ========== RESPONSIVE ========== */
+  @media (max-width: 900px) { .hero-photo-wrap { display: none; } }
   @media (max-width: 768px) {
-    .hero-stats { display: none; }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .skills-grid { grid-template-columns: 1fr 1fr; }
     nav { padding: 1rem 4%; }
     .nav-links { display: none; }
-    .role-switcher { gap: 0.3rem; }
-    .role-btn { padding: 0.3rem 0.6rem; font-size: 0.68rem; }
     .contact-section { padding: 2.5rem 1.5rem; }
+    .org-grid { grid-template-columns: 1fr; }
   }
-
-  /* ========== ROLE BADGE ========== */
-  .role-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(200,169,110,0.1);
-    border: 1px solid rgba(200,169,110,0.3);
-    border-radius: 100px;
-    padding: 0.4rem 1rem;
-    font-size: 0.8rem;
-    color: var(--role-color);
-    margin-bottom: 2rem;
-    font-weight: 500;
-    transition: background 0.5s, border-color 0.5s, color 0.5s;
-  }
-
-  .role-badge .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--role-color);
-    animation: pulse 2s infinite;
-    transition: background 0.5s;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.3); }
-  }
-
-  /* ========== EDUCATION ========== */
-  .edu-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.8rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-    transition: border-color 0.3s;
-  }
-
-  .edu-card:hover { border-color: var(--role-color); }
-
-  .edu-icon {
-    font-size: 2rem;
-    flex-shrink: 0;
-  }
-
-  .edu-degree {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-  }
-
-  .edu-school {
-    color: var(--role-color);
-    font-size: 0.85rem;
-    font-family: 'DM Mono', monospace;
-    margin-bottom: 0.3rem;
-    transition: color 0.5s;
-  }
-
-  .edu-detail {
-    font-size: 0.82rem;
-    color: var(--muted);
-  }
-
-  /* Cert chips */
-  .cert-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.7rem;
-    margin-top: 1.5rem;
-  }
-
-  .cert-chip {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.3s;
-  }
-
-  .cert-chip:hover {
-    border-color: var(--role-color);
-    color: var(--role-color);
-  }
-
 </style>
 </head>
-<body data-role="pm">
+<body>
 
 <div id="progress-bar"></div>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">Nabila.RA</div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#org">Organizations</a></li>
     <li><a href="#achievements">Awards</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="role-switcher">
-    <button class="role-btn active" data-role="pm" onclick="switchRole('pm')">PM</button>
-    <button class="role-btn" data-role="da" onclick="switchRole('da')">Data</button>
-    <button class="role-btn" data-role="ux" onclick="switchRole('ux')">UI/UX</button>
-    <button class="role-btn" data-role="hr" onclick="switchRole('hr')">HR</button>
-  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow" id="hero-eyebrow">Sistem Informasi · ITS Surabaya</div>
+    <div class="hero-eyebrow">Information Systems · ITS Surabaya</div>
     <h1 class="hero-name">
-      Nabila<br/>
-      <span class="accent">Rahadatul</span><br/>
-      Aisy
-    </h1>
-    <div class="hero-role-title" id="hero-role-title">Project Manager & Team Leader</div>
-    <p class="hero-desc" id="hero-desc">
-      Mahasiswa Sistem Informasi ITS dengan pengalaman memimpin proyek digital lintas disiplin. IPK 3.72 · Awardee Karya Salemba Empat 2025/2026.
-    </p>
+      <span class="accent">Nabila</span> Rahadatul<br>
+      Aisy Koestriyaningrum </h1>
+    <div class="hero-tags">
+      <span class="hero-tag t1">Data Analyst</span>
+      <span class="hero-tag t2">Project Manager</span>
+      <span class="hero-tag t3">UI/UX Designer</span>
+      <span class="hero-tag t4">People Development</span>
+    </div>
+    <p class="hero-desc">Information Systems student at ITS Surabaya with a passion for turning data into insights, leading impactful projects, and designing human-centered digital experiences. GPA 3.72 · Karya Salemba Empat Scholarship Awardee.</p>
     <div class="hero-cta">
-      <a href="#projects" class="btn-primary">Lihat Proyek</a>
-      <a href="#contact" class="btn-outline">Hubungi Saya</a>
+      <a href="https://drive.google.com/file/d/1yzSDPLmpMn-nIX_PpTk1GEYLkxmWTxSt/view?usp=drive_link" class="btn-primary" target="_blank">View CV</a>
+      <a href="#contact" class="btn-outline">Contact Me</a>
     </div>
   </div>
-
-  <div class="hero-stats" id="hero-stats">
-    <div class="stat-card">
-      <span class="stat-number">3.72</span>
-      <span class="stat-label">IPK</span>
+  <div class="hero-photo-wrap">
+    <img class="hero-photo" src="https://drive.google.com/thumbnail?id=1gpXyFRLexG6QI8vGcMhSGjxM19RlMU2w&sz=w1000" alt="Nabila Rahadatul Aisy Koestriyaningrum"/>
+    <div class="hero-stats-mini">
+      <div class="stat-card"><span class="stat-number">3.72</span><span class="stat-label">GPA</span></div>
+      <div class="stat-card"><span class="stat-number">Top 3</span><span class="stat-label">Dashboard</span></div>
     </div>
-    <div class="stat-card">
-      <span class="stat-number">10+</span>
-      <span class="stat-label">Projects</span>
-    </div>
-    <div class="stat-card">
-      <span class="stat-number" id="stat-top">Top 3</span>
-      <span class="stat-label" id="stat-label">Dashboard</span>
-    </div>
-    <div class="stat-card">
-      <span class="stat-number">🏆 4</span>
-      <span class="stat-label">Awards</span>
+    <div class="hero-stats-mini">
+      <div class="stat-card"><span class="stat-number">10+</span><span class="stat-label">Projects</span></div>
+      <div class="stat-card"><span class="stat-number">5</span><span class="stat-label">Awards</span></div>
     </div>
   </div>
 </section>
@@ -984,56 +487,43 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-label">01 — Tentang Saya</div>
+  <div class="section-label">01 — About Me</div>
   <div class="about-grid">
     <div class="about-text">
-      <div class="role-badge" id="about-badge">
-        <span class="dot"></span>
-        <span id="badge-text">Project Manager</span>
-      </div>
-      <div class="section-title" id="about-title">Memimpin proyek, menggerakkan tim.</div>
-      <div id="about-desc-content">
-        <p>Saya adalah mahasiswa Sistem Informasi ITS yang passionate dalam memimpin proyek digital end-to-end. Dengan IPK 3.72, saya menggabungkan kompetensi teknis dan soft skill manajerial untuk menghasilkan output yang berdampak.</p>
-        <p>Berpengalaman sebagai Project Leader di berbagai proyek akademik dan industri — mulai dari dashboard kinerja TI untuk PT Unilever (Top 3 + HaKI) hingga platform UI/UX yang meraih Juara 1 di kompetisi nasional.</p>
-      </div>
-      <div class="cert-list" id="cert-list">
-        <div class="cert-chip">📊 Power BI</div>
-        <div class="cert-chip">🗂️ Notion</div>
-        <div class="cert-chip">🎯 IT-BSC</div>
-        <div class="cert-chip">🔄 Scrum</div>
-        <div class="cert-chip">⚙️ SAP S/4HANA</div>
-        <div class="cert-chip">📋 IT Risk</div>
+      <div class="role-badge"><span class="dot"></span><span>Information Systems Student</span></div>
+      <div class="section-title">Data, Design,and People.</div>
+      <p>I'm a multidisciplinary Information Systems student at ITS who thrives at the intersection of data, technology, and human experience. Whether I'm building a Power BI dashboard, leading a cross-functional team, or crafting a Figma prototype. 
+         I bring both analytical rigour and creative thinking to every challenge.</p>
+      <p>From Top 3 at the PT Unilever IT-BSC Dashboard competition to 1st Place in UI/UX at FIND IT UGM 2025, and currently serving as Vice Head Internal of HMSI ITS.
+         I'm driven to make impact across all domains.</p>
+      <div class="cert-list">
+        <div class="cert-chip">Power BI</div>
+        <div class="cert-chip">Excel Advanced</div>
+        <div class="cert-chip">Figma</div>
+        <div class="cert-chip">SQL</div>
+        <div class="cert-chip">Python (ELT)</div>
+        <div class="cert-chip">SAP Signavio</div>
+        <div class="cert-chip">SmartPLS / SEM-PLS</div>
+        <div class="cert-chip">Scrum / Agile</div>
+        <div class="cert-chip">IT Risk Management</div>
+        <div class="cert-chip">IT-BSC</div>
       </div>
     </div>
-
-    <div class="about-highlights" id="about-highlights">
+    <div class="about-highlights">
       <div class="highlight-item">
-        <div class="highlight-icon">🎯</div>
-        <div>
-          <h4>Project Leadership</h4>
-          <p>Memimpin 10+ proyek lintas disiplin dengan scope dari dashboard analytics hingga aplikasi mobile</p>
-        </div>
+        <div><h4>Data Analytics & BI</h4><p>Power BI dashboards, Excel pivot tables, ELT pipelines, SQL analytics, and SEM-PLS modeling</p></div>
       </div>
       <div class="highlight-item">
-        <div class="highlight-icon">🏛️</div>
-        <div>
-          <h4>Institut Teknologi Sepuluh Nopember</h4>
-          <p>Sistem Informasi · IPK 3.72 · Awardee Karya Salemba Empat 2025/2026</p>
-        </div>
+        <div><h4>Project Management</h4><p>Led 5+ cross-disciplinary projects; experienced in Scrum, IS/IT planning, risk management, and enterprise architecture</p></div>
       </div>
       <div class="highlight-item">
-        <div class="highlight-icon">🏆</div>
-        <div>
-          <h4>Track Record Prestasi</h4>
-          <p>Juara 1 Nasional Bisnis Plan, Top 3 IT Dashboard PT Unilever + HaKI, GEMASTIK Finalist</p>
-        </div>
+        <div><h4>UI/UX Design</h4><p>End-to-end UX from user research to high-fi Figma prototypes. 1st Place FIND IT UGM 2025 · GEMASTIK XVIII Finalist · TA UX Design ITS</p></div>
       </div>
       <div class="highlight-item">
-        <div class="highlight-icon">👥</div>
-        <div>
-          <h4>Organisasi Aktif</h4>
-          <p>Vice Head Internal HMSI · HRD · Reporter ITS Online · Teater AGNI</p>
-        </div>
+        <div><h4> People Development</h4><p>Vice Head Internal HMSI ITS · Best Staff HRD · Managed cadre programs for 80+ committee, 200+ participants</p></div>
+      </div>
+      <div class="highlight-item">
+        <div><h4>Institut Teknologi Sepuluh Nopember</h4><p>Information Systems · GPA 3.72 · Karya Salemba Empat Scholarship Awardee 2023–Present</p></div>
       </div>
     </div>
   </div>
@@ -1043,32 +533,32 @@
 
 <!-- EDUCATION -->
 <section id="education">
-  <div class="section-label">02 — Pendidikan & Sertifikasi</div>
-  <div class="section-title">Latar Belakang Akademik</div>
-
+  <div class="section-label">02 — Education & Certifications</div>
+  <div class="section-title">Academic Background</div>
   <div class="edu-card">
-    <div class="edu-icon">🏛️</div>
+    <div class="edu-icon"></div>
     <div>
-      <div class="edu-degree">S1 Sistem Informasi</div>
+      <div class="edu-degree">Bachelor of Information Systems</div>
       <div class="edu-school">Institut Teknologi Sepuluh Nopember (ITS)</div>
-      <div class="edu-detail">Surabaya, Indonesia · IPK: 3.72 · Aktif</div>
+      <div class="edu-detail">Surabaya, Indonesia · Enrolled: May 2023</div>
+      <div class="edu-detail">GPA: 3.72 / 4.00</div>
+      <div class="edu-detail">Karya Salemba Empat Scholarship Awardee 2023 – Present</div>
     </div>
   </div>
-
   <div class="edu-card">
-    <div class="edu-icon">📚</div>
+    <div class="edu-icon"></div>
     <div>
-      <div class="edu-degree">IPA — Nilai 93.21</div>
+      <div class="edu-degree">Science Track — Score 93.21 / 100</div>
       <div class="edu-school">SMA Negeri 2 Madiun</div>
-      <div class="edu-detail">Madiun, Indonesia · Lulus</div>
+      <div class="edu-detail">Madiun, Indonesia · Jun 2020 – May 2023</div>
+      <div class="edu-detail">🥇 1st Place — National Science Olympiad, Economics, Madiun City</div>
+      <div class="edu-detail">🥇 1st Place — Poetry Musicalization, East Java Language Center</div>
     </div>
   </div>
-
   <div class="cert-list">
-    <div class="cert-chip">✅ SAP ERP Certification 2024</div>
-    <div class="cert-chip">✅ PKTI-TD 2023</div>
-    <div class="cert-chip">✅ LKM Wirausaha 2023</div>
-    <div class="cert-chip">✅ LKMM Tingkat Dasar 2024</div>
+    <a href="https://drive.google.com/file/d/13Dy3uuG9yhx7zXXXnmSTyJk3auS3aR8F/view?usp=drive_link" target="_blank" class="cert-chip">✅ SAP S/4HANA — SD, MM, PP Modules (GBI 4.2) 2024 ↗</a>
+    <a href="https://drive.google.com/file/d/1SJOH4YwE7YXi1kM-Lg-vFCk7yb_IXCgm/view?usp=drive_link" target="_blank" class="cert-chip">✅ PKTI-TD 2023 ↗</a>
+    <a href="https://drive.google.com/file/d/1-c3ptW0ztpQaFbP1IvqktaXHNnBerdJ_/view?usp=drive_link" target="_blank" class="cert-chip">✅ LKM Entrepreneurship 2023 ↗</a>
   </div>
 </section>
 
@@ -1076,218 +566,52 @@
 
 <!-- EXPERIENCE -->
 <section id="experience">
-  <div class="section-label">03 — Pengalaman</div>
-  <div class="section-title" id="exp-title">Magang & Kepemimpinan</div>
+  <div class="section-label">03 — Experience</div>
+  <div class="section-title">Internship & Teaching</div>
 
-  <!-- PM CONTENT -->
-  <div class="role-content active" id="exp-pm">
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-body">
-          <div class="timeline-meta">
-            <span class="timeline-org">HMSI ITS</span>
-            <span class="timeline-date">April 2026 – Sekarang</span>
-          </div>
-          <div class="timeline-title">Vice Head Internal</div>
-          <ul>
-            <li>Mengontrol dan mengkoordinasikan 5 departemen internal agar berjalan sesuai timeline</li>
-            <li>Menyusun sistem evaluasi kinerja (rapor staff) sebagai monitoring pengembangan SDM</li>
-            <li>Menginisiasi program upgrading & pencerdasan skill untuk kompetensi staff</li>
-          </ul>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-body">
+        <div class="timeline-meta">
+          <span class="timeline-org">PT Merak Chemical Indonesia (MCCI) · Cilegon</span>
+          <span class="timeline-date">Jan 2026 – Feb 2026</span>
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-body">
-          <div class="timeline-meta">
-            <span class="timeline-org">HMSI ITS · HRD</span>
-            <span class="timeline-date">Januari 2025 – Sekarang</span>
-          </div>
-          <div class="timeline-title">Human Resource Development — Best Staff April</div>
-          <ul>
-            <li>PIC seluruh rangkaian program kaderisasi melibatkan 80+ panitia dan 200+ peserta</li>
-            <li>Meraih predikat Best Staff HRD HMSI Niskalarasi Bulan April</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-body">
-          <div class="timeline-meta">
-            <span class="timeline-org">MABACUP 2024</span>
-            <span class="timeline-date">Juli – Desember 2024</span>
-          </div>
-          <div class="timeline-title">Vice Head of Main Event</div>
-          <ul>
-            <li>Mengelola 9 perlombaan antar departemen diikuti 6000 mahasiswa baru 2024</li>
-            <li>Menciptakan perlombaan akademik berbasis live simulation "The Stellar War"</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-body">
-          <div class="timeline-meta">
-            <span class="timeline-org">Teater AGNI SMAN 2 Madiun</span>
-            <span class="timeline-date">Agustus 2021 – Juli 2022</span>
-          </div>
-          <div class="timeline-title">Ketua</div>
-          <ul>
-            <li>Memimpin pelaksanaan Pentas Apresiasi Gen 37 & Pentas Tunggal Teater Agni</li>
-            <li>Pentas tunggal "Hujan Tak Pernah Usai" — terjual 600 tiket</li>
-            <li>Juara 1 Lomba Teater Jawa Pos Awards Dinas Pendidikan Jawa Timur 2021</li>
-          </ul>
-        </div>
+        <div class="timeline-title">IT Business & Data Analyst Intern</div>
+        <ul>
+          <li>Developed an interactive Power BI dashboard for real-time IT Helpdesk performance monitoring, reducing manual reporting effort</li>
+          <li>Designed 2 Power BI training modules and led workshops for 20+ interns to improve BI tool adoption</li>
+          <li>Led the corporate website redesign for MCCI using Figma, improving navigation flow and overall usability</li>
+        </ul>
       </div>
     </div>
-  </div>
-
-  <!-- DATA ANALYST CONTENT -->
-  <div class="role-content" id="exp-da">
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-body">
-          <div class="timeline-meta">
-            <span class="timeline-org">MCCI (Merak Chemical Indonesia)</span>
-            <span class="timeline-date">Januari – Februari 2026</span>
-          </div>
-          <div class="timeline-title">IT Business & Data Analyst Intern</div>
-          <ul>
-            <li>Inisiasi dashboard Power BI untuk visualisasi IT-Helpdesk divisi IT</li>
-            <li>Transfer knowledge Power BI melalui workshop untuk seluruh intern PT MCCI</li>
-            <li>Redesign Web MCCI (UI/UX) menggunakan Figma</li>
-          </ul>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-body">
+        <div class="timeline-meta">
+          <span class="timeline-org">Department of Information Systems, ITS · Surabaya</span>
+          <span class="timeline-date">Jan 2026 – Present</span>
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-body">
-          <div class="timeline-meta">
-            <span class="timeline-org">PT Unilever Tbk. — Academic Project</span>
-            <span class="timeline-date">Juni 2025</span>
-          </div>
-          <div class="timeline-title">Data & Business Analyst — IT Performance Dashboard</div>
-          <ul>
-            <li>Mengembangkan dashboard Power BI berbasis IT Balanced Scorecard (IT-BSC)</li>
-            <li>Project meraih Top 3 Dashboard Terbaik + kesempatan pendaftaran HaKI</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-body">
-          <div class="timeline-meta">
-            <span class="timeline-org">Academic Project</span>
-            <span class="timeline-date">Juni 2025</span>
-          </div>
-          <div class="timeline-title">Data Analyst — Dashboard Sekolah Indonesia</div>
-          <ul>
-            <li>Mengolah dataset nasional dari Kaggle, BPS, dan Kemdikbud</li>
-            <li>Membangun dashboard Excel dengan pivot table dan 6 Steps of Data Storytelling</li>
-          </ul>
-        </div>
+        <div class="timeline-title">Teaching Assistant — Business Process Management</div>
+        <ul>
+          <li>Taught BPM concepts (BPMN, process analysis) to 40+ students per semester</li>
+          <li>Guided students in analyzing and redesigning business processes using SAP Signavio</li>
+          <li>Evaluated 100+ assignments to strengthen analytical thinking and process modeling skills</li>
+        </ul>
       </div>
     </div>
-  </div>
-
-  <!-- UX CONTENT -->
-  <div class="role-content" id="exp-ux">
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-body">
-          <div class="timeline-meta">
-            <span class="timeline-org">MCCI — Internship</span>
-            <span class="timeline-date">Januari – Februari 2026</span>
-          </div>
-          <div class="timeline-title">UI/UX Designer — Web Redesign</div>
-          <ul>
-            <li>Redesign Web MCCI menggunakan Figma dengan pendekatan UI/UX modern</li>
-            <li>Melakukan analisis kebutuhan pengguna dan menyusun wireframe baru</li>
-          </ul>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-body">
+        <div class="timeline-meta">
+          <span class="timeline-org">Department of Information Systems, ITS · Surabaya</span>
+          <span class="timeline-date">Jan 2026 – Present</span>
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-body">
-          <div class="timeline-meta">
-            <span class="timeline-org">FIND IT UGM 2025 — Juara 1 🏆</span>
-            <span class="timeline-date">Juni 2025</span>
-          </div>
-          <div class="timeline-title">Project Leader — Platform SCOPE</div>
-          <ul>
-            <li>Memimpin end-to-end UX: user research, user flow, Figma prototyping</li>
-            <li>Menghasilkan design system lengkap & fitur eksplorasi beasiswa</li>
-            <li>Juara 1 UI/UX Design FIND IT UGM 2025 dan dipresentasikan di ISE!</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-body">
-          <div class="timeline-meta">
-            <span class="timeline-org">GEMASTIK XVIII 2025 — Finalis 🏅</span>
-            <span class="timeline-date">Juni 2025</span>
-          </div>
-          <div class="timeline-title">UI/UX Designer — "Relive" Digital Wellbeing App</div>
-          <ul>
-            <li>Mendesain solusi pengurangan screen time berbasis user research & habit tracking</li>
-            <li>Mengembangkan prototype high-fidelity dengan Figma</li>
-            <li>Terpilih sebagai Finalis GEMASTIK XVIII UX Design Nasional</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- HR CONTENT -->
-  <div class="role-content" id="exp-hr">
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-body">
-          <div class="timeline-meta">
-            <span class="timeline-org">HMSI ITS</span>
-            <span class="timeline-date">April 2026 – Sekarang</span>
-          </div>
-          <div class="timeline-title">Vice Head Internal — Koordinasi 5 Departemen</div>
-          <ul>
-            <li>Mengontrol dan mengkoordinasikan 5 departemen internal dalam pelaksanaan program kerja</li>
-            <li>Menyusun sistem evaluasi kinerja (rapor staff) sebagai monitoring SDM</li>
-            <li>Menginisiasi program upgrading & pencerdasan skill untuk kompetensi staff</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-body">
-          <div class="timeline-meta">
-            <span class="timeline-org">HMSI ITS · HRD</span>
-            <span class="timeline-date">Januari 2025 – Sekarang</span>
-          </div>
-          <div class="timeline-title">Human Resource Development — Best Staff April ⭐</div>
-          <ul>
-            <li>PIC program kaderisasi melibatkan 80+ panitia dan 200+ peserta</li>
-            <li>Bertanggung jawab penuh atas perencanaan, pelaksanaan, dan evaluasi kegiatan pengembangan mahasiswa baru</li>
-            <li>Meraih predikat Best Staff HRD HMSI Niskalarasi Bulan April</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-body">
-          <div class="timeline-meta">
-            <span class="timeline-org">CV Sanggar Biru Unlimited Culture</span>
-            <span class="timeline-date">Maret 2023 – Maret 2024</span>
-          </div>
-          <div class="timeline-title">Sekretaris</div>
-          <ul>
-            <li>Berkontribusi di berbagai event seni budaya daerah</li>
-            <li>Pelatih pelajar lomba Vokal Solo FLSSN 2023</li>
-          </ul>
-        </div>
+        <div class="timeline-title">Teaching Assistant — User Experience Design</div>
+        <ul>
+          <li>Evaluated and provided feedback on 80+ design assignments, enhancing usability and UX quality</li>
+          <li>Assisted in delivering user-centered design principles and UX methodologies to 40+ students per semester</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1297,191 +621,256 @@
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="section-label">04 — Proyek Unggulan</div>
-  <div class="section-title" id="proj-title">Karya & Hasil Nyata</div>
+  <div class="section-label">04 — Featured Projects</div>
+  <div class="section-title">Selected Work</div>
 
-  <!-- PM PROJECTS -->
-  <div class="role-content active projects-grid" id="proj-pm">
-    <div class="project-card">
-      <span class="project-tag">Project Management</span>
-      <div class="project-title">Dashboard Kinerja TI PT Unilever</div>
-      <p class="project-desc">Pengembangan dashboard Power BI berbasis IT Balanced Scorecard untuk monitoring kinerja TI Unilever. Berperan sebagai Project Leader.</p>
-      <div class="project-badge">🥉 Top 3 Dashboard Terbaik · HaKI</div>
-      <div class="project-chips">
-        <span class="chip">Power BI</span>
-        <span class="chip">IT-BSC</span>
-        <span class="chip">Scrum</span>
+  <!-- DATA PROJECTS -->
+  <div class="proj-category">
+    <span class="proj-category-label teal">📊 Data & Analytics</span>
+    <div class="proj-category-line"></div>
+  </div>
+  <div class="projects-grid" style="margin-bottom: 1rem;">
+    <div class="project-card c-teal">
+      <div class="project-card-body">
+        <span class="project-tag teal">Power BI · IT Analytics · Project Leader</span>
+        <div class="project-title">IT Performance Dashboard — PT Unilever</div>
+        <p class="project-desc">Power BI dashboard based on IT-BSC for IT performance monitoring and evaluation. Served as Project Leader & Data Analyst. Achieved Top 3 best dashboard and selected for HaKI (IP Rights) registration.</p>
+        <div class="project-badge">🥉 Top 3 + IP Rights (HaKI)</div>
+        <div class="project-chips"><span class="chip">Power BI</span><span class="chip">IT-BSC</span><span class="chip">KPI Monitoring</span><span class="chip">Project Leader</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://app.powerbi.com/view?r=eyJrIjoiMTViODA4OGUtZWQzOS00ZGQyLTk5N2ItMDQ4NDg2NjMzNjM1IiwidCI6IjFkNTE2OWFjLWM3Y2ItNDI3NS05NzY0LWJmOGM5YzM2NGE0YyIsImMiOjEwfQ%3D%3D" target="_blank" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Dashboard Power BI</a>
+        <a href="https://drive.google.com/drive/folders/1tTGaOkbKWC9tkXGNLqFod75lMj2kSnqb?usp=drive_link" target="_blank" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Report</a>
       </div>
     </div>
-    <div class="project-card">
-      <span class="project-tag">Software Engineering</span>
-      <div class="project-title">HealthTrack — Requirements Engineering</div>
-      <p class="project-desc">Menyusun rekayasa kebutuhan perangkat lunak untuk aplikasi mobile kesehatan: analisis bisnis, user needs, use case, hingga feature set.</p>
-      <div class="project-chips">
-        <span class="chip">SDLC</span>
-        <span class="chip">Use Case</span>
-        <span class="chip">Requirements</span>
+    <div class="project-card c-teal">
+      <div class="project-card-body">
+        <span class="project-tag teal">Power BI · Internship</span>
+        <div class="project-title">IT-Helpdesk Dashboard & Workshop — MCCI</div>
+        <p class="project-desc">Built an interactive Power BI dashboard for real-time IT Helpdesk performance visualization at PT Merak Chemical Indonesia. Designed 2 training modules and led a BI workshop for 20+ interns.</p>
+        <div class="project-chips"><span class="chip">Power BI</span><span class="chip">IT Helpdesk</span><span class="chip">Training Module</span><span class="chip">KPI</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://app.powerbi.com/view?r=eyJrIjoiZmJjY2Q1MDAtNGY4YS00NTVjLTkzYmItNGJmNzBkOGZlMGE3IiwidCI6IjFkNTE2OWFjLWM3Y2ItNDI3NS05NzY0LWJmOGM5YzM2NGE0YyIsImMiOjEwfQ%3D%3D" target="_blank" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Dashboard</a>
       </div>
     </div>
-    <div class="project-card">
-      <span class="project-tag">Scrum</span>
-      <div class="project-title">Kayyan's Cake — Brand & Digital Marketing</div>
-      <p class="project-desc">Mengimplementasikan Scrum untuk merancang ulang branding dan strategi pemasaran digital, dari redesign logo hingga strategi konten Instagram.</p>
-      <div class="project-chips">
-        <span class="chip">Scrum</span>
-        <span class="chip">Branding</span>
-        <span class="chip">Digital Marketing</span>
+    <div class="project-card c-teal">
+      <div class="project-card-body">
+        <span class="project-tag teal">ELT · Data Lakehouse</span>
+        <div class="project-title">Otomasi ELT Data Lakehouse</div>
+        <p class="project-desc">Built an end-to-end ELT pipeline using Python, PostgreSQL, and DBeaver. Designed a star schema data warehouse, cleaned multi-format data sources, and created SQL-based analytics with business insight visualizations.</p>
+        <div class="project-chips"><span class="chip">Python</span><span class="chip">PostgreSQL</span><span class="chip">DBeaver</span><span class="chip">Star Schema</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://drive.google.com/file/d/1eIa3DYTLsGer03an8x1LfM6zOVwytXWW/view?usp=drive_link" target="_blank" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Project</a>
       </div>
     </div>
-    <div class="project-card">
-      <span class="project-tag">IS/IT Planning</span>
-      <div class="project-title">Perencanaan Strategis SI/TI</div>
-      <p class="project-desc">Menyusun rencana strategis SI/TI untuk transformasi digital organisasi, termasuk analisis strategi, roadmap TI, dan enterprise architecture.</p>
-      <div class="project-chips">
-        <span class="chip">Enterprise Architecture</span>
-        <span class="chip">IT Roadmap</span>
-        <span class="chip">Strategic Planning</span>
+    <div class="project-card c-teal">
+      <div class="project-card-body">
+        <span class="project-tag teal">Excel · Data Storytelling</span>
+        <div class="project-title">Indonesia Education Dashboard</div>
+        <p class="project-desc">Processed and merged national school datasets from Kaggle, BPS, and Kemdikbud. Built an Excel dashboard with pivot tables using the 6 Steps of Data Storytelling framework to communicate educational equity insights.</p>
+        <div class="project-chips"><span class="chip">Excel</span><span class="chip">Pivot Table</span><span class="chip">Data Storytelling</span></div>
       </div>
-    </div>
-    <div class="project-card">
-      <span class="project-tag">IT Risk Management</span>
-      <div class="project-title">IT Risk Assessment & Mitigation</div>
-      <p class="project-desc">Memimpin analisis risiko TI menggunakan framework identifikasi aset, ancaman, kerentanan, dan penyusunan kontrol mitigasi. Dokumentasi via Notion.</p>
-      <div class="project-chips">
-        <span class="chip">Risk Framework</span>
-        <span class="chip">Notion</span>
-        <span class="chip">IT Security</span>
-      </div>
-    </div>
-    <div class="project-card">
-      <span class="project-tag">Flutter Development</span>
-      <div class="project-title">Tutor Application (Flutter)</div>
-      <p class="project-desc">Membangun aplikasi tutor lintas platform menggunakan Flutter, mencakup perancangan UI dan alur pembelajaran berbasis emerging technology.</p>
-      <div class="project-chips">
-        <span class="chip">Flutter</span>
-        <span class="chip">Cross-platform</span>
-        <span class="chip">EdTech</span>
+      <div class="project-links">
+        <a href="https://drive.google.com/file/d/1tKDA-U7i0ZAjd1aaPXLfQh6ogCUT0WVG/view?usp=drive_link" target="_blank" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Report</a>
       </div>
     </div>
   </div>
 
-  <!-- DATA PROJECTS -->
-  <div class="role-content projects-grid" id="proj-da">
-    <div class="project-card">
-      <span class="project-tag">Power BI · IT Analytics</span>
-      <div class="project-title">IT Performance Dashboard — PT Unilever</div>
-      <p class="project-desc">Dashboard Power BI berbasis IT-BSC untuk monitoring dan evaluasi kinerja TI. Top 3 terbaik dari seluruh kelompok dan mendapat kesempatan HaKI.</p>
-      <div class="project-badge">🥉 Top 3 + HaKI</div>
-      <div class="project-chips">
-        <span class="chip">Power BI</span>
-        <span class="chip">IT-BSC</span>
-        <span class="chip">KPI Monitoring</span>
+  <!-- PM PROJECTS -->
+  <div class="proj-category">
+    <span class="proj-category-label gold">👥 Project Management & IT Strategy</span>
+    <div class="proj-category-line"></div>
+  </div>
+  <div class="projects-grid" style="margin-bottom: 1rem;">
+    <div class="project-card c-gold">
+      <div class="project-card-body">
+        <span class="project-tag gold">IS/IT Strategic Planning · Project Leader</span>
+        <div class="project-title">IS/IT Strategic Planning & Enterprise Architecture</div>
+        <p class="project-desc">Coordinated a team of 5 in developing a multi-year IS/IT strategic plan to support organizational digital transformation, covering enterprise architecture and IT roadmap.</p>
+        <div class="project-chips"><span class="chip">Enterprise Architecture</span><span class="chip">IT Roadmap</span><span class="chip">Team Coordinator</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://drive.google.com/file/d/1npJrfKTdM1N9rkueyfBA2YaMcUqsW0xD/view?usp=drive_link" target="_blank" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Document</a>
       </div>
     </div>
-    <div class="project-card">
-      <span class="project-tag">Power BI · Internship</span>
-      <div class="project-title">IT-Helpdesk Dashboard — MCCI</div>
-      <p class="project-desc">Inisiasi dashboard Power BI untuk visualisasi IT-Helpdesk divisi IT. Juga mengadakan workshop Power BI untuk seluruh intern PT MCCI.</p>
-      <div class="project-chips">
-        <span class="chip">Power BI</span>
-        <span class="chip">IT Helpdesk</span>
-        <span class="chip">Workshop</span>
+    <div class="project-card c-gold">
+      <div class="project-card-body">
+        <span class="project-tag gold">IT Risk Management · Project Leader</span>
+        <div class="project-title">IT Risk Assessment & Mitigation Planning</div>
+        <p class="project-desc">Led analysis of 20+ IT assets, identified 15+ security risks, and developed mitigation controls and risk treatment recommendations based on likelihood & impact.</p>
+        <div class="project-chips"><span class="chip">Risk Framework</span><span class="chip">Notion</span><span class="chip">IT Security</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://cloudy-helium-275.notion.site/Discovery-Project-Report-21e303c8dfc880c2ab3ee1e3b98cbaaf" target="_blank" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Open Notion</a>
       </div>
     </div>
-    <div class="project-card">
-      <span class="project-tag">Excel · Data Storytelling</span>
-      <div class="project-title">Dashboard Pendidikan Indonesia</div>
-      <p class="project-desc">Mengolah dataset nasional sekolah Indonesia (Kaggle, BPS, Kemdikbud) dan membangun dashboard Excel dengan 6 Steps of Data Storytelling untuk pemerataan pendidikan.</p>
-      <div class="project-chips">
-        <span class="chip">Excel</span>
-        <span class="chip">Pivot Table</span>
-        <span class="chip">Data Storytelling</span>
-        <span class="chip">Kemdikbud</span>
+    <div class="project-card c-gold">
+      <div class="project-card-body">
+        <span class="project-tag gold">Scrum · Branding</span>
+        <div class="project-title">Kayyan's Cake — Brand & Digital Marketing</div>
+        <p class="project-desc">Implemented Scrum to redesign branding and digital marketing strategy — from logo redesign to Instagram content strategy.</p>
+        <div class="project-chips"><span class="chip">Scrum</span><span class="chip">Branding</span><span class="chip">Digital Marketing</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://drive.google.com/file/d/1wIYuqjAUUyY70GXGJQh0EIlQsBPm9t33/view?usp=drive_link" target="_blank" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Project</a>
       </div>
     </div>
   </div>
 
   <!-- UX PROJECTS -->
-  <div class="role-content projects-grid" id="proj-ux">
-    <div class="project-card">
-      <span class="project-tag">UI/UX · Juara 1 Nasional 🏆</span>
-      <div class="project-title">"SCOPE" — Scholarship Guidance Platform</div>
-      <p class="project-desc">Memimpin end-to-end UX untuk platform panduan beasiswa SMA. User research → user flow → Figma prototyping → design system lengkap.</p>
-      <div class="project-badge">🥇 Juara 1 FIND IT UGM 2025</div>
-      <div class="project-chips">
-        <span class="chip">Figma</span>
-        <span class="chip">Design System</span>
-        <span class="chip">User Research</span>
-        <span class="chip">Prototyping</span>
+  <div class="proj-category">
+    <span class="proj-category-label purple">🎨 UI/UX Design</span>
+    <div class="proj-category-line"></div>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card c-purple">
+     <div class="ux-preview">
+  <img 
+    src="https://drive.google.com/thumbnail?id=1de830BjCBMHXD35HkobmR2aeKnn_aCuf&sz=w1000"
+    alt="SCOPE UI Preview"
+  />
+  <div class="preview-badge">UI Preview</div>
+</div>
+      <div class="project-card-body">
+        <span class="project-tag purple">UI/UX · 🏆 National 1st Place</span>
+        <div class="project-title">"SCOPE" — Scholarship Guidance Platform</div>
+        <p class="project-desc">End-to-end UX for a high school scholarship guidance platform. User research → user flow → Figma prototyping → complete design system.</p>
+        <div class="project-badge">🥇 1st Place — FIND IT UGM 2025</div>
+        <div class="project-chips"><span class="chip">Figma</span><span class="chip">Design System</span><span class="chip">User Research</span><span class="chip">Prototyping</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://www.figma.com/proto/NzERmxb0kgEGdNdanKyehk/SCOPE-2025?node-id=621-8084&p=f&viewport=-1676%2C-331%2C0.16&t=roACJAQhTrjvwCdT-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=621%3A8175&page-id=621%3A7227" target="_blank" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Figma Prototype</a>
+        <a href="https://drive.google.com/file/d/1g5ArHV6mTaikQ8w0urtWjKv3hiRZpExN/view?usp=drive_link" target="_blank" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Certificate</a>
       </div>
     </div>
-    <div class="project-card">
-      <span class="project-tag">UX · Finalis Nasional 🏅</span>
-      <div class="project-title">"Relive" — Digital Wellbeing App</div>
-      <p class="project-desc">Solusi pengurangan screen time berbasis user research dan habit tracking. Prototype high-fidelity di Figma. Finalis GEMASTIK XVIII UX Design.</p>
-      <div class="project-badge">🏅 Finalis GEMASTIK XVIII</div>
-      <div class="project-chips">
-        <span class="chip">Figma</span>
-        <span class="chip">High-Fi Prototype</span>
-        <span class="chip">Habit Tracking</span>
+    <div class="project-card c-purple">
+      <div class="ux-preview">
+  <img 
+    src="https://drive.google.com/thumbnail?id=1vKMKUQgZl0jmO5d-Lm4IHO21bOOlkC82&sz=w1000"
+    alt="Relive UI Preview"
+  />
+  <div class="preview-badge">UI Preview</div>
+</div>
+      <div class="project-card-body">
+        <span class="project-tag purple">UX · 🏅 National Finalist</span>
+        <div class="project-title">"Relive" — Digital Wellbeing App</div>
+        <p class="project-desc">Screen time reduction solution based on user research & habit tracking. High-fidelity prototype in Figma. Finalist at GEMASTIK XVIII UX Design.</p>
+        <div class="project-badge">🏅 Finalist — GEMASTIK XVIII</div>
+        <div class="project-chips"><span class="chip">Figma</span><span class="chip">High-Fi Prototype</span><span class="chip">Habit Tracking</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://www.figma.com/proto/ZGfhwLlLrwRcNWb9lsnU9n/Relive-?node-id=1302-7878&p=f&viewport=382%2C-486%2C0.05&t=eXOiXi40bpYrGlJf-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1302%3A7878&show-proto-sidebar=1&page-id=590%3A3132" target="_blank" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Figma Prototype</a>
+        <a href="https://drive.google.com/file/d/1jnK-VT6WYGr9n_EyWHUKC2BIMR7qy6Vb/view?usp=drive_link" target="_blank" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Certificate</a>
       </div>
     </div>
-    <div class="project-card">
-      <span class="project-tag">UX Research · E-Learning</span>
-      <div class="project-title">"Jago Teknik" — Bimbingan Belajar Platform</div>
-      <p class="project-desc">Needfinding, user research, user flow, dan perancangan Low-Fi hingga High-Fi prototype untuk platform belajar teknik. Menghasilkan design system + heuristic evaluation.</p>
-      <div class="project-chips">
-        <span class="chip">Figma</span>
-        <span class="chip">UX Research</span>
-        <span class="chip">Heuristic Eval</span>
-        <span class="chip">Low/Med/Hi-Fi</span>
+    <div class="project-card c-purple">
+      <div class="ux-preview">
+  <img 
+    src="https://drive.google.com/thumbnail?id=1ZjJ_nxw1EOMBjZXiRURSLV11-I0Fu_em&sz=w1000"
+    alt="Jago Teknik UI Preview"
+  />
+  <div class="preview-badge">UI Preview</div>
+</div>
+      <div class="project-card-body">
+        <span class="project-tag purple">UX Research · E-Learning</span>
+        <div class="project-title">"Jago Teknik" — Engineering Tutoring Platform</div>
+        <p class="project-desc">UX research with 30 participants → user flow → wireframe → interactive Figma prototype. Low-Fi to High-Fi + heuristic evaluation + design system.</p>
+        <div class="project-chips"><span class="chip">Figma</span><span class="chip">UX Research</span><span class="chip">Heuristic Eval</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://www.figma.com/proto/sPb7zJxNt1Sm5DWcAncOrq/LoFi?node-id=561-41471&page-id=561%3A2180&starting-point-node-id=561%3A41471&t=SfvfkFm3LxlrjPIc-1" target="_blank" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Prototype</a>
+        <a href="https://viery.my.canva.site/jago-teknik-web" target="_blank" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Report</a>
       </div>
     </div>
-    <div class="project-card">
-      <span class="project-tag">UI Redesign</span>
-      <div class="project-title">Web Redesign — MCCI</div>
-      <p class="project-desc">Redesign website PT Merak Chemical Indonesia dengan pendekatan UI/UX modern menggunakan Figma selama masa internship.</p>
-      <div class="project-chips">
-        <span class="chip">Figma</span>
-        <span class="chip">UI Redesign</span>
-        <span class="chip">Corporate Web</span>
+    <div class="project-card c-purple">
+     <div class="ux-preview">
+  <img 
+    src="https://drive.google.com/thumbnail?id=1I18a63ZlMBIasFhB4qP2ZEFFUVqY4gb9&sz=w1000"
+    alt="MCCI Website Redesign Preview"
+  />
+  <div class="preview-badge">UI Preview</div>
+</div>
+      <div class="project-card-body">
+        <span class="project-tag purple">UI Redesign · Internship</span>
+        <div class="project-title">Website Redesign — PT Merak Chemical Indonesia</div>
+        <p class="project-desc">Redesigned the MCCI corporate website using Figma. Conducted user needs analysis, built new wireframes, and improved navigation flow.</p>
+        <div class="project-chips"><span class="chip">Figma</span><span class="chip">UI Redesign</span><span class="chip">Corporate Web</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://www.figma.com/proto/ZKYxIP2S2QoTS10R7nfChj/UI-WEB-MCCI-NEW?page-id=0%3A1&node-id=34-985&viewport=460%2C401%2C0.02&t=x0MfTJEKU0FxdgAz-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=34%3A985" target="_blank" class="project-link"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Figma Design</a>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- HR PROJECTS -->
-  <div class="role-content projects-grid" id="proj-hr">
-    <div class="project-card">
-      <span class="project-tag">People Development · Best Staff ⭐</span>
-      <div class="project-title">Program Kaderisasi HMSI — "Manage"</div>
-      <p class="project-desc">PIC seluruh rangkaian program kaderisasi mahasiswa baru HMSI melibatkan 80+ panitia dan 200+ peserta. Meraih Best Staff HRD Bulan April.</p>
-      <div class="project-badge">⭐ Best Staff HRD HMSI Niskalarasi</div>
-      <div class="project-chips">
-        <span class="chip">Kaderisasi</span>
-        <span class="chip">Event Management</span>
-        <span class="chip">Team Coordination</span>
-      </div>
+<div class="divider"></div>
+
+<!-- ORGANISATIONS -->
+<section id="org">
+  <div class="section-label">05 — Organizations & Committees</div>
+  <div class="section-title">Organizations & Committees</div>
+
+  <div class="org-grid">
+    <div class="org-card">
+      <div class="org-role-type leader">Leader</div>
+      <div class="org-title">Vice Head Internal — HMSI ITS</div>
+      <div class="org-place">Information Systems Student Association — ITS</div>
+      <div class="org-date">April 2026 – Present</div>
+      <ul class="org-bullets">
+        <li>Coordinated 5 internal departments (100+ members) to ensure all work programs run on schedule</li>
+        <li>Designed staff performance evaluation system and skill upgrading programs</li>
+      </ul>
     </div>
-    <div class="project-card">
-      <span class="project-tag">Performance Management</span>
-      <div class="project-title">Sistem Evaluasi Kinerja Staff HMSI</div>
-      <p class="project-desc">Menyusun dan melaksanakan sistem rapor staff sebagai monitoring dan pengembangan SDM. Menginisiasi program upgrading skill untuk meningkatkan kompetensi staff organisasi.</p>
-      <div class="project-chips">
-        <span class="chip">Performance Review</span>
-        <span class="chip">SDM Development</span>
-        <span class="chip">KPI</span>
-      </div>
+    <div class="org-card">
+      <div class="org-role-type leader">Leader</div>
+      <div class="org-title">Human Resource Development — HMSI ITS</div>
+      <div class="org-place">HRD Division · HMSI Niskalarasi</div>
+      <div class="org-date">January 2025 – November 2025</div>
+      <ul class="org-bullets">
+        <li>PIC for cadre development program "Manage" — 80+ committee, 200+ participants</li>
+        <li>Best Staff HRD HMSI Niskalarasi — April 2025</li>
+      </ul>
     </div>
-    <div class="project-card">
-      <span class="project-tag">Event & Culture</span>
-      <div class="project-title">Pentas Tunggal "Hujan Tak Pernah Usai"</div>
-      <p class="project-desc">Memimpin sebagai Ketua Teater AGNI dalam menyelenggarakan pentas tunggal yang berhasil menjual 600 tiket dan meraih Juara 1 Jawa Pos Awards 2021.</p>
-      <div class="project-badge">🥇 Juara 1 Teater Jawa Pos Awards 2021</div>
-      <div class="project-chips">
-        <span class="chip">Leadership</span>
-        <span class="chip">Event Planning</span>
-        <span class="chip">Culture</span>
-      </div>
+    <div class="org-card">
+      <div class="org-role-type leader">Leader</div>
+      <div class="org-title">Vice Head Main Event — MABACUP 2024</div>
+      <div class="org-place">ITS</div>
+      <div class="org-date">July 2024 – December 2024</div>
+      <ul class="org-bullets">
+        <li>Managed 9 competitive events attended by 6,000 new students</li>
+        <li>Initiated "The Stellar War" — an academic live-simulation competition</li>
+      </ul>
+    </div>
+    <div class="org-card">
+      <div class="org-role-type member">Member</div>
+      <div class="org-title">Reporter — ITS Online</div>
+      <div class="org-place">Official Media of ITS</div>
+      <div class="org-date">December 2023 – Present</div>
+      <ul class="org-bullets">
+        <li>Covered visits of the Deputy Minister and Minister of Higher Education to ITS</li>
+        <li>Reporter of The Month — March & April 2025</li>
+      </ul>
+    </div>
+    <div class="org-card">
+      <div class="org-role-type committee">Committee</div>
+      <div class="org-title">Event Runner — International IS Conference</div>
+      <div class="org-place">Bali, Indonesia</div>
+      <div class="org-date">April 2025 – September 2025</div>
+      <ul class="org-bullets">
+        <li>Coordinated protocol support for 2 international keynote speakers</li>
+      </ul>
+    </div>
+    <div class="org-card">
+      <div class="org-role-type committee">Committee</div>
+      <div class="org-title">Conceptor Paper Mob — GERIGI ITS 2024</div>
+      <div class="org-place">Institut Teknologi Sepuluh Nopember</div>
+      <div class="org-date">2024</div>
+      <ul class="org-bullets">
+        <li>Conceptor team for paper mob configuration for 6,000+ new students</li>
+        <li>Earned the MURI Record for "Largest Paper Mob Configuration by New Students"</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1490,141 +879,46 @@
 
 <!-- ACHIEVEMENTS -->
 <section id="achievements">
-  <div class="section-label">05 — Penghargaan & Beasiswa</div>
-  <div class="section-title">Prestasi & Pengakuan</div>
-
+  <div class="section-label">06 — Awards & Scholarships</div>
+  <div class="section-title">Achievements & Recognition</div>
   <div class="achievements-grid">
-    <div class="achievement-card">
-      <div class="achievement-icon">🥇</div>
-      <div class="achievement-text">
-        <strong>Juara 1 UX Design FIND IT UGM 2025</strong>
-        <span>Kompetisi UI/UX Nasional — Platform SCOPE</span>
-      </div>
-    </div>
-    <div class="achievement-card">
-      <div class="achievement-icon">🏅</div>
-      <div class="achievement-text">
-        <strong>Finalis GEMASTIK XVIII 2025</strong>
-        <span>UX Design Nasional — Digital Wellbeing App "Relive"</span>
-      </div>
-    </div>
-    <div class="achievement-card">
-      <div class="achievement-icon">🥇</div>
-      <div class="achievement-text">
-        <strong>Juara 1 Bisnis Plan Jiwa Pemuda 2024</strong>
-        <span>Kompetisi Bisnis Plan Nasional</span>
-      </div>
-    </div>
-    <div class="achievement-card">
-      <div class="achievement-icon">🥉</div>
-      <div class="achievement-text">
-        <strong>Juara 3 FBC × BIZDEV FTIRS ITS 2023</strong>
-        <span>Kompetisi Bisnis Plan ITS</span>
-      </div>
-    </div>
-    <div class="achievement-card">
-      <div class="achievement-icon">🎓</div>
-      <div class="achievement-text">
-        <strong>Awardee Karya Salemba Empat 2025/2026</strong>
-        <span>Beasiswa Prestasi Nasional</span>
-      </div>
-    </div>
-    <div class="achievement-card">
-      <div class="achievement-icon">📊</div>
-      <div class="achievement-text">
-        <strong>Top 3 + HaKI — Dashboard PT Unilever</strong>
-        <span>IT Performance Dashboard berbasis IT-BSC</span>
-      </div>
-    </div>
-    <div class="achievement-card">
-      <div class="achievement-icon">🎭</div>
-      <div class="achievement-text">
-        <strong>Juara 1 Teater Jawa Pos Awards 2021</strong>
-        <span>Dinas Pendidikan Provinsi Jawa Timur</span>
-      </div>
-    </div>
-    <div class="achievement-card">
-      <div class="achievement-icon">⭐</div>
-      <div class="achievement-text">
-        <strong>Best Staff HRD HMSI</strong>
-        <span>Niskalarasi — Bulan April 2025</span>
-      </div>
-    </div>
-    <div class="achievement-card">
-      <div class="achievement-icon">🎤</div>
-      <div class="achievement-text">
-        <strong>Juara Harapan 2 — Kharisma Band Festival 2023</strong>
-        <span>Vocalist Category</span>
-      </div>
-    </div>
-    <div class="achievement-card">
-      <div class="achievement-icon">📰</div>
-      <div class="achievement-text">
-        <strong>Reporter ITS Online</strong>
-        <span>Meliput Wakil Menteri Pendidikan RI di ITS</span>
-      </div>
-    </div>
+    <div class="achievement-card"><div class="achievement-icon">🥇</div><div class="achievement-text"><strong>1st Place UX Design — FIND IT UGM 2025</strong><span>National UI/UX Competition — SCOPE Platform</span></div></div>
+    <div class="achievement-card"><div class="achievement-icon">🏅</div><div class="achievement-text"><strong>GEMASTIK XVIII 2025 Finalist</strong><span>National UX Design — "Relive"</span></div></div>
+    <div class="achievement-card"><div class="achievement-icon">🥇</div><div class="achievement-text"><strong>1st Place Business Plan — Jiwa Pemuda 2024</strong><span>National Business Plan Competition</span></div></div>
+    <div class="achievement-card"><div class="achievement-icon">🥉</div><div class="achievement-text"><strong>3rd Place FBC × BIZDEV FTIRS ITS 2023</strong><span>ITS Business Plan Competition</span></div></div>
+    <div class="achievement-card"><div class="achievement-icon">🎓</div><div class="achievement-text"><strong>Karya Salemba Empat Scholarship 2023 – Present</strong><span>National Merit Scholarship</span></div></div>
+    <div class="achievement-card"><div class="achievement-icon">📊</div><div class="achievement-text"><strong>Top 3 + HaKI — PT Unilever Dashboard</strong><span>IT Performance Dashboard based on IT-BSC</span></div></div>
+    <div class="achievement-card"><div class="achievement-icon">🏅</div><div class="achievement-text"><strong>MURI Record 2024 — GERIGI ITS Paper Mob</strong><span>Largest Paper Mob Configuration (6,000+ participants)</span></div></div>
+    <div class="achievement-card"><div class="achievement-icon">🎭</div><div class="achievement-text"><strong>1st Place — Jawa Pos Theater Awards 2021</strong><span>East Java Provincial Education Department</span></div></div>
+    <div class="achievement-card"><div class="achievement-icon">⭐</div><div class="achievement-text"><strong>Best Staff HRD HMSI Niskalarasi</strong><span>April 2025</span></div></div>
+    <div class="achievement-card"><div class="achievement-icon">📰</div><div class="achievement-text"><strong>Reporter of The Month — ITS Online</strong><span>March & April 2025</span></div></div>
+    <div class="achievement-card"><div class="achievement-icon">🥇</div><div class="achievement-text"><strong>1st Place — National Science Olympiad, Economics</strong><span>Madiun City</span></div></div>
+    <div class="achievement-card"><div class="achievement-icon">🥇</div><div class="achievement-text"><strong>1st Place — Poetry Musicalization</strong><span>East Java Language Center</span></div></div>
+    <div class="achievement-card"><div class="achievement-icon">🎤</div><div class="achievement-text"><strong>2nd Runner-Up — Kharisma Band Festival 2023</strong><span>Vocalist Category</span></div></div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- SKILLS DETAIL -->
+<!-- SKILLS -->
 <section id="skills">
-  <div class="section-label">06 — Keahlian Teknis</div>
+  <div class="section-label">07 — Technical Skills</div>
   <div class="section-title">Tech Stack & Tools</div>
-
   <div class="skills-section-grid">
-    <div class="skill-card">
-      <span class="skill-card-icon">📊</span>
-      <div class="skill-card-name">Power BI</div>
-      <div class="skill-card-level">Advanced</div>
-    </div>
-    <div class="skill-card">
-      <span class="skill-card-icon">🎨</span>
-      <div class="skill-card-name">Figma</div>
-      <div class="skill-card-level">Advanced</div>
-    </div>
-    <div class="skill-card">
-      <span class="skill-card-icon">📋</span>
-      <div class="skill-card-name">Notion</div>
-      <div class="skill-card-level">Advanced</div>
-    </div>
-    <div class="skill-card">
-      <span class="skill-card-icon">💙</span>
-      <div class="skill-card-name">Flutter</div>
-      <div class="skill-card-level">Intermediate</div>
-    </div>
-    <div class="skill-card">
-      <span class="skill-card-icon">🗄️</span>
-      <div class="skill-card-name">SQL</div>
-      <div class="skill-card-level">Intermediate</div>
-    </div>
-    <div class="skill-card">
-      <span class="skill-card-icon">📈</span>
-      <div class="skill-card-name">Excel</div>
-      <div class="skill-card-level">Advanced</div>
-    </div>
-    <div class="skill-card">
-      <span class="skill-card-icon">🔧</span>
-      <div class="skill-card-name">SAP S/4HANA</div>
-      <div class="skill-card-level">Certified</div>
-    </div>
-    <div class="skill-card">
-      <span class="skill-card-icon">🎯</span>
-      <div class="skill-card-name">IT-BSC</div>
-      <div class="skill-card-level">Project Experience</div>
-    </div>
-    <div class="skill-card">
-      <span class="skill-card-icon">🔄</span>
-      <div class="skill-card-name">Scrum / Agile</div>
-      <div class="skill-card-level">Project Experience</div>
-    </div>
-    <div class="skill-card">
-      <span class="skill-card-icon">🛡️</span>
-      <div class="skill-card-name">IT Risk Mgmt</div>
-      <div class="skill-card-level">Intermediate</div>
-    </div>
+    <div class="skill-card"><div class="skill-card-name">Power BI</div><div class="skill-card-level">Advanced</div></div>
+    <div class="skill-card"><div class="skill-card-name">Figma</div><div class="skill-card-level">Advanced</div></div>
+    <div class="skill-card"><div class="skill-card-name">Excel & Pivot Table</div><div class="skill-card-level">Advanced</div></div>
+    <div class="skill-card"><div class="skill-card-name">Notion</div><div class="skill-card-level">Advanced</div></div>
+    <div class="skill-card"><div class="skill-card-name">Python (ELT)</div><div class="skill-card-level">Intermediate</div></div>
+    <div class="skill-card"><div class="skill-card-name">SQL</div><div class="skill-card-level">Intermediate</div></div>
+    <div class="skill-card"><div class="skill-card-name">Flutter</div><div class="skill-card-level">Intermediate</div></div>
+    <div class="skill-card"><div class="skill-card-name">SmartPLS / SEM-PLS</div><div class="skill-card-level">Project Experience</div></div>
+    <div class="skill-card"><div class="skill-card-name">SAP S/4HANA</div><div class="skill-card-level">Certified</div></div>
+    <div class="skill-card"><div class="skill-card-name">SAP Signavio</div><div class="skill-card-level">Project Experience</div></div>
+    <div class="skill-card"><div class="skill-card-name">IT-BSC</div><div class="skill-card-level">Project Experience</div></div>
+    <div class="skill-card"><div class="skill-card-name">Scrum / Agile</div><div class="skill-card-level">Project Experience</div></div>
+    <div class="skill-card"><div class="skill-card-name">IT Risk Management</div><div class="skill-card-level">Intermediate</div></div>
+    <div class="skill-card"><div class="skill-card-name">IS/IT Strategic Planning</div><div class="skill-card-level">Project Experience</div></div>
   </div>
 </section>
 
@@ -1633,11 +927,9 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-section">
-    <div class="section-label" style="justify-content:center;">07 — Let's Connect</div>
-    <div class="contact-title">Mari Berkolaborasi ✨</div>
-    <p class="contact-desc" id="contact-desc">
-      Terbuka untuk peluang magang, kolaborasi proyek, atau sekadar berdiskusi tentang data, desain, dan teknologi.
-    </p>
+    <div class="section-label" style="justify-content:center;">08 — Let's Connect</div>
+    <div class="contact-title">Let's Collaborate</div>
+    <p class="contact-desc">Open to opportunities in Data Analytics, Business Analysis, UI/UX Design, Project Management, or People Development. Let's build something meaningful together.</p>
     <div class="contact-links">
       <a href="https://www.linkedin.com/in/nabilarahadatul" target="_blank" class="contact-link">
         <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -1649,11 +941,10 @@
       </a>
       <a href="mailto:nabilarahadatul16@gmail.com" class="contact-link">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        Email
+        nabilarahadatul16@gmail.com
       </a>
-      <a href="https://drive.google.com/file/d/15l_3ryDe_hViBM94SvWVO32Qw7Zmimix/view?usp=sharing" target="_blank" class="contact-link">
-        📄 Download CV
-      </a>
+      <a href="https://portofolio-nabila-taupe.vercel.app/" target="_blank" class="contact-link">🌐 Portfolio Website</a>
+      <a href="https://drive.google.com/file/d/1yzSDPLmpMn-nIX_PpTk1GEYLkxmWTxSt/view?usp=drive_link" target="_blank" class="contact-link">📄 Download CV</a>
     </div>
   </div>
 </section>
@@ -1663,139 +954,20 @@
 </footer>
 
 <script>
-  // ===== ROLE CONFIG =====
-  const roles = {
-    pm: {
-      color: '#c8a96e',
-      colorAlpha: 'rgba(200,169,110,0.08)',
-      title: 'Project Manager & Team Leader',
-      desc: 'Mahasiswa Sistem Informasi ITS dengan pengalaman memimpin proyek digital lintas disiplin. IPK 3.72 · Awardee Karya Salemba Empat 2025/2026.',
-      badge: 'Project Manager',
-      aboutTitle: 'Memimpin proyek, menggerakkan tim.',
-      aboutDesc: `<p>Saya adalah mahasiswa Sistem Informasi ITS yang passionate dalam memimpin proyek digital end-to-end. Dengan IPK 3.72, saya menggabungkan kompetensi teknis dan soft skill manajerial untuk menghasilkan output yang berdampak.</p>
-        <p>Berpengalaman sebagai Project Leader di berbagai proyek akademik dan industri — mulai dari dashboard kinerja TI untuk PT Unilever (Top 3 + HaKI) hingga platform UI/UX yang meraih Juara 1 di kompetisi nasional.</p>`,
-      certs: ['📊 Power BI', '🗂️ Notion', '🎯 IT-BSC', '🔄 Scrum', '⚙️ SAP S/4HANA', '📋 IT Risk'],
-      expTitle: 'Magang & Kepemimpinan Organisasi',
-      projTitle: 'Proyek yang Saya Pimpin',
-      statTop: 'Top 3', statLabel: 'Dashboard',
-      contactDesc: 'Terbuka untuk peluang magang sebagai Project Manager, Business Analyst, atau IT Consultant.',
-    },
-    da: {
-      color: '#5ecfb1',
-      colorAlpha: 'rgba(94,207,177,0.08)',
-      title: 'Data Analyst & Business Intelligence',
-      desc: 'Mengolah data menjadi insight yang actionable. Berpengalaman dengan Power BI, Excel, dan IT-BSC untuk decision making berbasis data.',
-      badge: 'Data Analyst',
-      aboutTitle: 'Data speaks louder than words.',
-      aboutDesc: `<p>Saya percaya bahwa keputusan terbaik lahir dari data yang diolah dengan benar. Saya berpengalaman membangun dashboard dan sistem visualisasi data untuk berbagai kebutuhan bisnis dan teknologi.</p>
-        <p>Dari IT-Helpdesk analytics di MCCI hingga dashboard kinerja TI berbasis IT-BSC untuk PT Unilever yang meraih Top 3 — saya terbiasa bekerja dengan data skala besar dan mengomunikasikannya secara visual.</p>`,
-      certs: ['📊 Power BI', '📈 Excel Advanced', '🗄️ SQL', '🎯 IT-BSC', '📉 Data Storytelling', '⚙️ SAP S/4HANA'],
-      expTitle: 'Pengalaman Data & Analytics',
-      projTitle: 'Proyek Analisis Data',
-      statTop: 'Top 3', statLabel: 'Dashboard',
-      contactDesc: 'Terbuka untuk peluang sebagai Data Analyst, Business Analyst, atau BI Developer.',
-    },
-    ux: {
-      color: '#b07ef5',
-      colorAlpha: 'rgba(176,126,245,0.08)',
-      title: 'UI/UX Designer & Researcher',
-      desc: 'Mendesain pengalaman pengguna yang intuitif dan berdampak. Juara 1 FIND IT UGM 2025 & Finalis GEMASTIK XVIII UX Design.',
-      badge: 'UI/UX Designer',
-      aboutTitle: 'Design that solves, not just impresses.',
-      aboutDesc: `<p>Saya berfokus pada human-centered design — dari needfinding dan user research hingga High-Fi prototype yang bisa langsung diimplementasikan. Setiap pixel memiliki alasan di baliknya.</p>
-        <p>Karya saya sudah diakui di level nasional: Juara 1 FIND IT UGM 2025 dan Finalis GEMASTIK XVIII untuk kategori UX Design — bukti bahwa desain yang baik bisa berbicara di panggung kompetisi.</p>`,
-      certs: ['🎨 Figma', '🔍 UX Research', '📐 Design System', '🧠 Heuristic Eval', '📱 Prototyping', '🎯 User Testing'],
-      expTitle: 'Pengalaman Desain & UX',
-      projTitle: 'Portofolio Desain',
-      statTop: 'Juara 1', statLabel: 'FIND IT UGM',
-      contactDesc: 'Terbuka untuk peluang sebagai UI/UX Designer, UX Researcher, atau Product Designer.',
-    },
-    hr: {
-      color: '#e87b6a',
-      colorAlpha: 'rgba(232,123,106,0.08)',
-      title: 'Human Resource & People Development',
-      desc: 'Membangun sistem SDM yang efektif dan mengembangkan potensi manusia. Best Staff HRD HMSI · Vice Head Internal yang koordinasikan 5 departemen.',
-      badge: 'HR Professional',
-      aboutTitle: 'People are the greatest asset.',
-      aboutDesc: `<p>Pengalaman saya di bidang HR berakar dari kepemimpinan nyata — bukan hanya teori. Saya telah mengelola program kaderisasi dengan 80+ panitia, merancang sistem evaluasi kinerja, dan membangun kultur organisasi yang positif.</p>
-        <p>Sebagai Vice Head Internal HMSI, saya mengkoordinasikan 5 departemen sekaligus — pengalaman yang mengajarkan saya tentang manajemen SDM, komunikasi organisasi, dan pengembangan kompetensi tim.</p>`,
-      certs: ['👥 Team Coordination', '📋 Performance Review', '🎯 Kaderisasi', '🗣️ Public Speaking', '📝 Documentation', '🔄 Change Management'],
-      expTitle: 'Pengalaman HR & Organisasi',
-      projTitle: 'Program People Development',
-      statTop: 'Best', statLabel: 'Staff HRD',
-      contactDesc: 'Terbuka untuk peluang sebagai HR Generalist, People Development, atau Organizational Development.',
-    }
-  };
+window.addEventListener('scroll', () => {
+  const progress = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  document.getElementById('progress-bar').style.width = progress + '%';
+});
 
-  function switchRole(role) {
-    const config = roles[role];
-    
-    // Update CSS variable
-    document.body.setAttribute('data-role', role);
-    
-    // Update role buttons
-    document.querySelectorAll('.role-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.role === role);
+function observeElements() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 80);
     });
-
-    // Update hero
-    document.getElementById('hero-role-title').textContent = config.title;
-    document.getElementById('hero-desc').textContent = config.desc;
-    document.getElementById('hero-bg').style.background = `radial-gradient(ellipse 60% 50% at 80% 50%, ${config.colorAlpha.replace('0.08', '0.1')} 0%, transparent 70%)`;
-
-    // Update about
-    document.getElementById('badge-text').textContent = config.badge;
-    document.getElementById('about-title').textContent = config.aboutTitle;
-    document.getElementById('about-desc-content').innerHTML = config.aboutDesc;
-
-    // Update certs
-    const certList = document.getElementById('cert-list');
-    certList.innerHTML = config.certs.map(c => `<div class="cert-chip">${c}</div>`).join('');
-
-    // Update stats
-    document.getElementById('stat-top').textContent = config.statTop;
-    document.getElementById('stat-label').textContent = config.statLabel;
-
-    // Update section titles
-    document.getElementById('exp-title').textContent = config.expTitle;
-    document.getElementById('proj-title').textContent = config.projTitle;
-    document.getElementById('contact-desc').textContent = config.contactDesc;
-
-    // Show correct experience & project sections
-    document.querySelectorAll('.role-content').forEach(el => {
-      el.classList.remove('active');
-    });
-    document.getElementById('exp-' + role).classList.add('active');
-    document.getElementById('proj-' + role).classList.add('active');
-
-    // Re-trigger scroll animations
-    setTimeout(() => observeElements(), 100);
-  }
-
-  // ===== SCROLL PROGRESS =====
-  window.addEventListener('scroll', () => {
-    const progress = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-    document.getElementById('progress-bar').style.width = progress + '%';
-  });
-
-  // ===== SCROLL ANIMATIONS =====
-  function observeElements() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.timeline-item:not(.visible), .project-card:not(.visible)').forEach(el => {
-      observer.observe(el);
-    });
-  }
-
-  // Initialize
-  observeElements();
-  switchRole('pm');
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.timeline-item, .project-card, .org-card').forEach(el => observer.observe(el));
+}
+observeElements();
 </script>
 </body>
 </html>
