@@ -18,33 +18,127 @@
   --coral:  #e87b6a;
   --t: .35s;
 }
+
+/* ── DARK THEME (unchanged) ── */
 [data-theme="dark"] {
-  --bg:      #0a0a0f;
-  --surface: #12121a;
-  --surface2:#1a1a26;
-  --border:  rgba(255,255,255,0.08);
-  --borderh: rgba(255,255,255,0.16);
-  --text:    #f0eee8;
-  --muted:   #888899;
-  --dim:     #55526a;
-  --overlay: rgba(10,10,15,0.88);
-  --shadow:  rgba(0,0,0,0.55);
-  --modal-bg:#12121a;
-}
-[data-theme="light"] {
-  --bg:      #f5f3ee;
-  --surface: #eeece7;
-  --surface2:#e4e1d9;
-  --border:  rgba(0,0,0,0.08);
-  --borderh: rgba(0,0,0,0.18);
-  --text:    #1a1825;
-  --muted:   #5a576e;
-  --dim:     #9490a8;
-  --overlay: rgba(245,243,238,0.92);
-  --shadow:  rgba(0,0,0,0.12);
-  --modal-bg:#f5f3ee;
+  --bg:       #0a0a0f;
+  --surface:  #12121a;
+  --surface2: #1a1a26;
+  --border:   rgba(255,255,255,0.08);
+  --borderh:  rgba(255,255,255,0.16);
+  --text:     #f0eee8;
+  --muted:    #888899;
+  --dim:      #55526a;
+  --overlay:  rgba(10,10,15,0.88);
+  --shadow:   rgba(0,0,0,0.55);
+  --modal-bg: #12121a;
+
+  /* accent colours stay same in dark */
+  --c-teal:    #5ecfb1;
+  --c-teal-bg: rgba(94,207,177,.1);
+  --c-teal-bd: rgba(94,207,177,.3);
+  --c-gold:    #c8a96e;
+  --c-gold-bg: rgba(200,169,110,.12);
+  --c-purple:  #b07ef5;
+  --c-purp-bg: rgba(176,126,245,.12);
 }
 
+/* ── LIGHT THEME — high-contrast rewrite ── */
+[data-theme="light"] {
+  --bg:       #f7f5f0;
+  --surface:  #ffffff;
+  --surface2: #edeae3;
+  --border:   rgba(0,0,0,0.10);
+  --borderh:  rgba(0,0,0,0.22);
+  --text:     #111018;
+  --muted:    #4a4760;
+  --dim:      #7c79a0;
+  --overlay:  rgba(247,245,240,0.93);
+  --shadow:   rgba(0,0,0,0.10);
+  --modal-bg: #ffffff;
+
+  /* accent colours — darkened so they pop on white/cream */
+  --c-teal:    #1a8c6e;        /* dark teal for text/icons */
+  --c-teal-bg: rgba(26,140,110,.10);
+  --c-teal-bd: rgba(26,140,110,.35);
+  --c-gold:    #8a5f1a;
+  --c-gold-bg: rgba(138,95,26,.10);
+  --c-purple:  #6b3fca;
+  --c-purp-bg: rgba(107,63,202,.10);
+}
+
+/* ── Map the semantic tokens → theme tokens ── */
+[data-theme="dark"]  { --teal: var(--c-teal); --gold: var(--c-gold); --purple: var(--c-purple); }
+[data-theme="light"] { --teal: var(--c-teal); --gold: var(--c-gold); --purple: var(--c-purple); }
+
+/* ── Light theme specific overrides ── */
+[data-theme="light"] .section-label          { color: var(--c-teal); }
+[data-theme="light"] .section-label::after   { background: var(--c-teal); }
+[data-theme="light"] .hero-eyebrow           { color: var(--c-teal); }
+[data-theme="light"] .hero-eyebrow::before   { background: var(--c-teal); }
+[data-theme="light"] .hero-name .accent      { color: var(--c-teal); }
+[data-theme="light"] .hero-tag.t1            { border-color: var(--c-teal-bd); color: var(--c-teal); background: var(--c-teal-bg); }
+[data-theme="light"] .hero-tag.t2            { border-color: var(--c-gold-bd, rgba(138,95,26,.3)); color: var(--c-gold); background: var(--c-gold-bg); }
+[data-theme="light"] .hero-tag.t3            { border-color: var(--c-purp-bd, rgba(107,63,202,.3)); color: var(--c-purple); background: var(--c-purp-bg); }
+[data-theme="light"] .stat-card              { border-left-color: var(--c-teal); }
+[data-theme="light"] .stat-number            { color: var(--c-teal); }
+[data-theme="light"] .role-badge             { background: var(--c-teal-bg); border-color: var(--c-teal-bd); color: var(--c-teal); }
+[data-theme="light"] .role-badge .dot        { background: var(--c-teal); }
+[data-theme="light"] .highlight-item:hover   { border-color: var(--c-teal); }
+[data-theme="light"] .edu-school             { color: var(--c-teal); }
+[data-theme="light"] .edu-card:hover         { border-color: var(--c-teal); }
+[data-theme="light"] .cert-chip:hover        { border-color: var(--c-teal); color: var(--c-teal); }
+[data-theme="light"] .timeline-dot           { border-color: var(--c-teal); }
+[data-theme="light"] .timeline-dot::after    { background: var(--c-teal); }
+[data-theme="light"] .timeline-org           { color: var(--c-teal); }
+[data-theme="light"] .timeline-body:hover    { border-color: var(--c-teal); }
+[data-theme="light"] .timeline-body ul li::before { color: var(--c-teal); }
+[data-theme="light"] .proj-category-label.teal { background: var(--c-teal-bg); color: var(--c-teal); }
+[data-theme="light"] .proj-category-label.gold { background: var(--c-gold-bg); color: var(--c-gold); }
+[data-theme="light"] .proj-category-label.purple { background: var(--c-purp-bg); color: var(--c-purple); }
+[data-theme="light"] .powerbi-wrapper:hover  { border-color: var(--c-teal); }
+[data-theme="light"] .powerbi-dot            { background: var(--c-teal); }
+[data-theme="light"] .powerbi-badge          { background: var(--c-teal-bg); color: var(--c-teal); border-color: var(--c-teal-bd); }
+[data-theme="light"] .module-link            { background: var(--c-teal-bg); border-color: var(--c-teal-bd); color: var(--c-teal); }
+[data-theme="light"] .module-link:hover      { background: rgba(26,140,110,.2); border-color: var(--c-teal); }
+[data-theme="light"] .project-tag.teal       { background: var(--c-teal-bg); color: var(--c-teal); }
+[data-theme="light"] .project-tag.gold       { background: var(--c-gold-bg); color: var(--c-gold); }
+[data-theme="light"] .project-tag.purple     { background: var(--c-purp-bg); color: var(--c-purple); }
+[data-theme="light"] .project-link:hover     { border-color: var(--c-teal); color: var(--c-teal); background: var(--c-teal-bg); }
+[data-theme="light"] .preview-badge          { color: var(--c-purple); border-color: rgba(107,63,202,.3); background: rgba(247,245,240,.9); }
+[data-theme="light"] .org-card::before       { background: var(--c-teal); }
+[data-theme="light"] .org-card.has-gallery:hover { border-color: var(--c-teal); }
+[data-theme="light"] .org-role-type.leader   { background: var(--c-gold-bg); color: var(--c-gold); }
+[data-theme="light"] .org-role-type.committee{ background: var(--c-teal-bg); color: var(--c-teal); }
+[data-theme="light"] .org-role-type.member   { background: var(--c-purp-bg); color: var(--c-purple); }
+[data-theme="light"] .gallery-hint           { background: var(--c-teal-bg); border-color: var(--c-teal-bd); color: var(--c-teal); }
+[data-theme="light"] .org-place              { color: var(--c-teal); }
+[data-theme="light"] .org-bullets li::before { color: var(--c-teal); }
+[data-theme="light"] .org-output-link        { border-color: var(--c-teal-bd); color: var(--c-teal); background: var(--c-teal-bg); }
+[data-theme="light"] .org-output-link:hover  { background: rgba(26,140,110,.2); border-color: var(--c-teal); }
+[data-theme="light"] .achievement-card.has-gallery:hover { border-color: var(--c-teal); }
+[data-theme="light"] .photo-hint             { background: var(--c-teal-bg); border-color: var(--c-teal-bd); color: var(--c-teal); }
+[data-theme="light"] .contact-section::before{ background: radial-gradient(circle, rgba(26,140,110,.08) 0%, transparent 70%); }
+[data-theme="light"] .contact-link:hover     { border-color: var(--c-teal); color: var(--c-teal); }
+[data-theme="light"] .nav-links a:hover      { color: var(--c-teal); }
+[data-theme="light"] .nav-mobile a:hover     { color: var(--c-teal); }
+[data-theme="light"] .nav-logo               { background: linear-gradient(90deg, var(--c-teal), var(--c-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+[data-theme="light"] .theme-toggle:hover     { border-color: var(--c-teal); }
+[data-theme="light"] .pdf-btn:hover          { border-color: var(--c-teal); color: var(--c-teal); }
+[data-theme="light"] .modal-close:hover      { border-color: var(--c-teal); color: var(--c-teal); }
+[data-theme="light"] .modal-arrow:hover      { background: var(--c-teal); }
+[data-theme="light"] .modal-dot.active       { background: var(--c-teal); }
+[data-theme="light"] .modal-open-link:hover  { border-color: var(--c-teal); color: var(--c-teal); }
+[data-theme="light"] .hero-bg                { background: radial-gradient(ellipse 55% 50% at 80% 50%, rgba(26,140,110,.06) 0%, transparent 60%), radial-gradient(ellipse 40% 40% at 15% 75%, rgba(107,63,202,.04) 0%, transparent 60%); }
+[data-theme="light"] .hero-photo             { border-color: var(--c-teal); box-shadow: 0 10px 40px rgba(0,0,0,.15); }
+[data-theme="light"] .project-card.c-teal::before { background: var(--c-teal); }
+[data-theme="light"] .project-card.c-gold::before { background: var(--c-gold); }
+[data-theme="light"] .project-card.c-purple::before { background: var(--c-purple); }
+[data-theme="light"] .progress-bar-el        { background: linear-gradient(90deg, var(--c-teal), var(--c-purple), var(--c-gold)); }
+
+/* ════════════════════════
+   BASE STYLES
+════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden;transition:background var(--t),color var(--t)}
@@ -56,55 +150,42 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;o
 
 #progress-bar{position:fixed;top:0;left:0;height:2px;width:0%;z-index:2000;background:linear-gradient(90deg,var(--teal),var(--purple),var(--gold));transition:width .1s}
 
-/* ── NAV ── */
+/* NAV */
 nav{position:fixed;inset:0 0 auto 0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 5%;background:var(--overlay);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background var(--t),border-color var(--t)}
 .nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;background:linear-gradient(90deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;white-space:nowrap;flex-shrink:0}
 .nav-links{display:flex;gap:1.6rem}
 .nav-links a{color:var(--muted);font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover{color:var(--teal)}
 .nav-right{display:flex;align-items:center;gap:.6rem}
-
-/* theme toggle */
 .theme-toggle{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:var(--surface);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:border-color .2s,transform .25s,background var(--t);flex-shrink:0}
 .theme-toggle:hover{border-color:var(--teal);transform:rotate(18deg)}
-
-/* ── PDF EXPORT BUTTON ── */
-.pdf-btn{
-  display:inline-flex;align-items:center;gap:.4rem;
-  padding:.4rem .9rem;border-radius:6px;
-  border:1px solid var(--border);background:var(--surface);
-  color:var(--muted);font-family:'DM Mono',monospace;font-size:.72rem;
-  cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0;
-  letter-spacing:.04em;
-}
+.pdf-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .9rem;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-family:'DM Mono',monospace;font-size:.72rem;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0;letter-spacing:.04em}
 .pdf-btn:hover{border-color:var(--teal);color:var(--teal)}
 .pdf-btn svg{flex-shrink:0}
-
-/* hamburger */
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
 .nav-burger span{display:block;width:22px;height:2px;background:var(--muted);border-radius:2px;transition:.3s}
 .nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .nav-burger.open span:nth-child(2){opacity:0}
 .nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-
 .nav-mobile{display:none;position:fixed;inset:56px 0 0 0;z-index:999;background:var(--overlay);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2rem;padding:2rem;transition:background var(--t)}
 .nav-mobile.open{display:flex}
 .nav-mobile a{color:var(--text);font-size:1.3rem;font-family:'Playfair Display',serif;font-weight:700;letter-spacing:.04em;transition:color .2s}
 .nav-mobile a:hover{color:var(--teal)}
 
-/* ── HELPERS ── */
+/* HELPERS */
 .section{padding:5rem 5%}
 .divider{height:1px;background:var(--border);margin:0 5%;transition:background var(--t)}
 .section-label{font-family:'DM Mono',monospace;font-size:.74rem;color:var(--teal);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem}
 .section-label::after{content:'';flex:1;max-width:3rem;height:1px;background:var(--teal)}
 .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.8rem);font-weight:700;line-height:1.2;margin-bottom:2.5rem}
 .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.8rem 1.8rem;border-radius:6px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.88rem;cursor:pointer;text-decoration:none;letter-spacing:.04em;transition:all .25s;border:1px solid transparent}
-.btn-primary{background:var(--teal);color:#0a0a0f;border-color:var(--teal)}
+.btn-primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+[data-theme="light"] .btn-primary{background:var(--c-teal);color:#fff;border-color:var(--c-teal)}
 .btn-primary:hover{opacity:.85;transform:translateY(-2px)}
 .btn-outline{background:transparent;color:var(--text);border-color:var(--border)}
 .btn-outline:hover{border-color:var(--teal);color:var(--teal)}
 
-/* ── HERO ── */
+/* HERO */
 .hero{min-height:100vh;padding:7rem 5% 4rem;display:flex;align-items:center;gap:3rem;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 50% at 80% 50%,rgba(94,207,177,.07) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 15% 75%,rgba(176,126,245,.05) 0%,transparent 60%)}
 .hero-content{position:relative;z-index:1;flex:1;min-width:0}
@@ -128,7 +209,7 @@ nav{position:fixed;inset:0 0 auto 0;z-index:1000;display:flex;align-items:center
 .stat-number{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:900;color:var(--teal);display:block}
 .stat-label{font-size:.64rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
 
-/* ── ABOUT ── */
+/* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
 .about-text p{color:var(--muted);line-height:1.8;margin-bottom:1.1rem;font-size:.93rem}
 .role-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(94,207,177,.1);border:1px solid rgba(94,207,177,.3);border-radius:100px;padding:.38rem .95rem;font-size:.78rem;color:var(--teal);margin-bottom:1.5rem;font-weight:500}
@@ -144,7 +225,7 @@ a.cert-chip{cursor:pointer;text-decoration:none}
 .highlight-item h4{font-size:.86rem;font-weight:600;margin-bottom:.15rem}
 .highlight-item p{font-size:.79rem;color:var(--muted);line-height:1.55}
 
-/* ── EDUCATION ── */
+/* EDUCATION */
 .edu-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;align-items:flex-start;gap:1.4rem;margin-bottom:.9rem;transition:border-color .25s,background var(--t)}
 .edu-card:hover{border-color:var(--teal)}
 .edu-icon{font-size:1.8rem;flex-shrink:0;margin-top:.1rem}
@@ -152,7 +233,7 @@ a.cert-chip{cursor:pointer;text-decoration:none}
 .edu-school{color:var(--teal);font-size:.82rem;font-family:'DM Mono',monospace;margin-bottom:.25rem}
 .edu-detail{font-size:.8rem;color:var(--muted);margin-bottom:.12rem;line-height:1.5}
 
-/* ── TIMELINE ── */
+/* TIMELINE */
 .timeline{position:relative;display:flex;flex-direction:column}
 .timeline::before{content:'';position:absolute;left:11px;top:4px;bottom:4px;width:1px;background:var(--border);transition:background var(--t)}
 .timeline-item{display:flex;gap:1.75rem;padding-bottom:2.2rem;opacity:0;transform:translateY(18px);transition:opacity .55s,transform .55s}
@@ -169,7 +250,7 @@ a.cert-chip{cursor:pointer;text-decoration:none}
 .timeline-body ul li{font-size:.83rem;color:var(--muted);padding-left:1.1rem;position:relative;line-height:1.6}
 .timeline-body ul li::before{content:'→';position:absolute;left:0;color:var(--teal)}
 
-/* ── PROJECT CATEGORY HEADERS ── */
+/* PROJECT CATEGORY HEADERS */
 .proj-category{display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem;margin-top:3rem}
 .proj-category:first-child{margin-top:0}
 .proj-category-label{font-family:'DM Mono',monospace;font-size:.73rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:.28rem .8rem;border-radius:100px;white-space:nowrap}
@@ -178,7 +259,7 @@ a.cert-chip{cursor:pointer;text-decoration:none}
 .proj-category-label.purple{background:rgba(176,126,245,.12);color:var(--purple)}
 .proj-category-line{flex:1;height:1px;background:var(--border);transition:background var(--t)}
 
-/* ── POWER BI ── */
+/* POWER BI */
 .powerbi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.2rem}
 .powerbi-wrapper{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .25s,background var(--t);display:flex;flex-direction:column}
 .powerbi-wrapper:hover{border-color:var(--teal)}
@@ -190,31 +271,16 @@ a.cert-chip{cursor:pointer;text-decoration:none}
 .powerbi-frame-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 .powerbi-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;background:var(--surface2);color:var(--muted);font-size:.75rem;font-family:'DM Mono',monospace;text-align:center;padding:1rem;pointer-events:none;transition:background var(--t)}
 .powerbi-fallback svg{width:30px;height:30px;opacity:.3;stroke:var(--teal)}
-
-/* ── POWER BI DESCRIPTION + FOOTER ── */
-.powerbi-desc{
-  padding:.65rem 1rem;border-bottom:1px solid var(--border);
-  font-size:.78rem;color:var(--muted);line-height:1.55;
-  transition:border-color var(--t);
-}
+.powerbi-desc{padding:.65rem 1rem;border-bottom:1px solid var(--border);font-size:.78rem;color:var(--muted);line-height:1.55;transition:border-color var(--t)}
 .powerbi-desc strong{color:var(--text);font-weight:600}
 .powerbi-footer{display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:.4rem;transition:border-color var(--t)}
 .powerbi-chips{display:flex;flex-wrap:wrap;gap:.3rem}
 .powerbi-links{display:flex;gap:.4rem;flex-wrap:wrap}
-
-/* module pill link */
-.module-link{
-  display:inline-flex;align-items:center;gap:.3rem;
-  padding:.22rem .7rem;border-radius:100px;
-  border:1px solid rgba(94,207,177,.25);
-  background:rgba(94,207,177,.07);
-  color:var(--teal);font-family:'DM Mono',monospace;font-size:.68rem;
-  text-decoration:none;transition:all .2s;letter-spacing:.04em;
-}
+.module-link{display:inline-flex;align-items:center;gap:.3rem;padding:.22rem .7rem;border-radius:100px;border:1px solid rgba(94,207,177,.25);background:rgba(94,207,177,.07);color:var(--teal);font-family:'DM Mono',monospace;font-size:.68rem;text-decoration:none;transition:all .2s;letter-spacing:.04em}
 .module-link:hover{background:rgba(94,207,177,.18);border-color:var(--teal)}
 .module-link svg{flex-shrink:0}
 
-/* ── PROJECT CARDS ── */
+/* PROJECT CARDS */
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.3rem;margin-bottom:1rem}
 .project-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.6rem;position:relative;overflow:hidden;display:flex;flex-direction:column;opacity:0;transform:translateY(18px);transition:opacity .55s,transform .55s,border-color .25s,box-shadow .25s,background var(--t)}
 .project-card.visible{opacity:1;transform:none}
@@ -230,21 +296,20 @@ a.cert-chip{cursor:pointer;text-decoration:none}
 .project-tag.purple{background:rgba(176,126,245,.12);color:var(--purple)}
 .project-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.6rem;line-height:1.3}
 .project-desc{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:.9rem}
-.project-badge{font-size:.71rem;color:#ffd700;font-weight:600;margin-bottom:.75rem;display:block}
+.project-badge{font-size:.71rem;color:#e6a800;font-weight:600;margin-bottom:.75rem;display:block}
+[data-theme="dark"] .project-badge{color:#ffd700}
 .project-chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.7rem}
 .chip{background:var(--surface2);color:var(--muted);font-size:.68rem;font-family:'DM Mono',monospace;padding:.18rem .52rem;border-radius:4px;border:1px solid var(--border);transition:background var(--t),border-color var(--t)}
 .project-links{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:1.1rem;padding-top:.9rem;border-top:1px solid var(--border)}
 .project-link{display:inline-flex;align-items:center;gap:.3rem;padding:.3rem .8rem;border-radius:6px;border:1px solid var(--border);color:var(--muted);text-decoration:none;font-size:.73rem;font-family:'DM Mono',monospace;transition:all .22s;letter-spacing:.04em}
 .project-link:hover{border-color:var(--teal);color:var(--teal);background:rgba(94,207,177,.05)}
 .project-link svg{flex-shrink:0}
-
-/* UX preview */
 .ux-preview{margin-bottom:.9rem;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--surface2);position:relative;transition:border-color var(--t)}
 .ux-preview img{width:100%;height:175px;object-fit:contain;object-position:center;display:block;background:var(--surface2);transition:transform .35s,background var(--t)}
 .project-card:hover .ux-preview img{transform:scale(1.03)}
 .preview-badge{position:absolute;top:8px;right:8px;background:rgba(10,10,15,.78);backdrop-filter:blur(6px);color:var(--purple);font-size:.63rem;font-family:'DM Mono',monospace;padding:.18rem .5rem;border-radius:4px;border:1px solid rgba(176,126,245,.3);letter-spacing:.06em}
 
-/* ── ORG CARDS ── */
+/* ═══ ORG CARDS ═══ */
 .org-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.3rem}
 .org-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;position:relative;overflow:hidden;opacity:0;transform:translateY(18px);transition:opacity .55s,transform .55s,border-color .25s,box-shadow .25s,background var(--t)}
 .org-card.visible{opacity:1;transform:none}
@@ -262,11 +327,30 @@ a.cert-chip{cursor:pointer;text-decoration:none}
 .org-title{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;margin-bottom:.25rem;line-height:1.3}
 .org-place{font-size:.76rem;color:var(--teal);font-family:'DM Mono',monospace;margin-bottom:.4rem}
 .org-date{font-size:.7rem;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:.7rem}
-.org-bullets{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.org-bullets{list-style:none;display:flex;flex-direction:column;gap:.3rem;margin-bottom:.9rem}
 .org-bullets li{font-size:.8rem;color:var(--muted);padding-left:1rem;position:relative;line-height:1.5}
 .org-bullets li::before{content:'→';position:absolute;left:0;color:var(--teal)}
 
-/* ── ACHIEVEMENTS ── */
+/* ── Output links inside org cards ── */
+.org-outputs{
+  display:flex;flex-wrap:wrap;gap:.4rem;
+  padding-top:.75rem;border-top:1px solid var(--border);
+  margin-top:.1rem;
+  transition:border-color var(--t);
+}
+.org-output-link{
+  display:inline-flex;align-items:center;gap:.3rem;
+  padding:.25rem .7rem;border-radius:100px;
+  border:1px solid rgba(94,207,177,.25);
+  background:rgba(94,207,177,.07);
+  color:var(--teal);font-family:'DM Mono',monospace;font-size:.68rem;
+  text-decoration:none;transition:all .2s;letter-spacing:.04em;
+  /* stop click from bubbling to gallery opener */
+}
+.org-output-link:hover{background:rgba(94,207,177,.18);border-color:var(--teal)}
+.org-output-link svg{flex-shrink:0}
+
+/* ACHIEVEMENTS */
 .achievements-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.9rem}
 .achievement-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.3rem;display:flex;align-items:center;gap:.9rem;transition:all .25s,background var(--t)}
 .achievement-card:hover{border-color:var(--borderh);transform:translateX(4px)}
@@ -279,7 +363,7 @@ a.cert-chip{cursor:pointer;text-decoration:none}
 .photo-hint{flex-shrink:0;width:28px;height:28px;border-radius:6px;background:rgba(94,207,177,.1);border:1px solid rgba(94,207,177,.2);color:var(--teal);display:flex;align-items:center;justify-content:center;opacity:.6;transition:opacity .2s}
 .achievement-card.has-gallery:hover .photo-hint{opacity:1}
 
-/* ── MODAL ── */
+/* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.82);backdrop-filter:blur(14px);align-items:center;justify-content:center;padding:1.5rem;cursor:zoom-out}
 .modal-overlay.open{display:flex}
 .modal-box{position:relative;width:min(680px,92vw);background:var(--modal-bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;cursor:default;animation:modalIn .25s ease;box-shadow:0 24px 80px rgba(0,0,0,.6);transition:background var(--t),border-color var(--t)}
@@ -307,14 +391,14 @@ a.cert-chip{cursor:pointer;text-decoration:none}
 .modal-open-link{display:inline-flex;align-items:center;gap:.3rem;padding:.3rem .8rem;border-radius:6px;border:1px solid var(--border);color:var(--muted);text-decoration:none;font-size:.73rem;font-family:'DM Mono',monospace;transition:all .22s}
 .modal-open-link:hover{border-color:var(--teal);color:var(--teal)}
 
-/* ── SKILLS ── */
+/* SKILLS */
 .skills-section-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.9rem}
 .skill-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.1rem;text-align:center;transition:all .25s,background var(--t)}
 .skill-card:hover{border-color:var(--borderh);transform:translateY(-3px)}
 .skill-card-name{font-size:.8rem;font-weight:600;margin-bottom:.25rem}
 .skill-card-level{font-size:.7rem;color:var(--muted);font-family:'DM Mono',monospace}
 
-/* ── CONTACT ── */
+/* CONTACT */
 .contact-section{background:var(--surface);border-radius:20px;padding:4rem;text-align:center;border:1px solid var(--border);position:relative;overflow:hidden;transition:background var(--t),border-color var(--t)}
 .contact-section::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:300px;height:300px;background:radial-gradient(circle,rgba(94,207,177,.1) 0%,transparent 70%)}
 .contact-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.4rem);font-weight:700;margin-bottom:.9rem;position:relative}
@@ -325,80 +409,50 @@ a.cert-chip{cursor:pointer;text-decoration:none}
 
 footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;border-top:1px solid var(--border);transition:border-color var(--t),color var(--t)}
 
-/* ── SCROLL REVEAL ── */
+/* SCROLL REVEAL */
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
 .reveal.visible{opacity:1;transform:none}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 
-/* ── PDF EXPORT OVERLAY ── */
-.pdf-toast{
-  display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:5000;
-  background:var(--surface);border:1px solid var(--teal);border-radius:10px;
-  padding:.9rem 1.3rem;font-size:.8rem;color:var(--text);
-  display:flex;align-items:center;gap:.6rem;
-  box-shadow:0 8px 32px var(--shadow);
-  animation:toastIn .3s ease;
-  transition:background var(--t);
-}
+/* PDF TOAST */
+.pdf-toast{position:fixed;bottom:1.5rem;right:1.5rem;z-index:5000;background:var(--surface);border:1px solid var(--teal);border-radius:10px;padding:.9rem 1.3rem;font-size:.8rem;color:var(--text);display:flex;align-items:center;gap:.6rem;box-shadow:0 8px 32px var(--shadow);animation:toastIn .3s ease;transition:background var(--t)}
 @keyframes toastIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .pdf-toast.hidden{display:none!important}
 .pdf-toast-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse 1.5s infinite;flex-shrink:0}
 
-/* ── PRINT / PDF STYLES ── */
+/* PRINT */
 @media print {
-  /* hide interactive / non-essential stuff */
-  nav, .nav-mobile, #progress-bar, .theme-toggle, .pdf-btn,
-  .nav-burger, .pdf-toast, .modal-overlay { display: none !important; }
-
-  body { background: #fff !important; color: #111 !important; font-size: 11pt; }
-  .section { padding: 1.5rem 1rem; break-inside: avoid; }
-  .divider { background: #ddd !important; margin: 0; }
-  .hero { min-height: auto; padding: 2rem 1rem 1rem; flex-direction: row; gap: 1.5rem; }
-  .hero-bg { display: none; }
-  .hero-name { font-size: 2.4rem; }
-  .hero-photo { width: 120px; height: 160px; border-radius: 12px; }
-  .hero-stats-row { gap: .4rem; }
-  .stat-card { padding: .5rem .6rem; border-left-width: 2px; background: #f5f5f5; border-color: #ccc; }
-  .stat-number { font-size: 1rem; color: #333 !important; }
-  .stat-label { font-size: .55rem; }
-
-  /* all cards visible (no opacity animation) */
-  .timeline-item, .project-card, .org-card, .reveal { opacity: 1 !important; transform: none !important; }
-
-  /* Power BI iframes → replace with link */
-  .powerbi-frame-wrap { display: none; }
-  .powerbi-wrapper { break-inside: avoid; }
-  .powerbi-fallback { display: none; }
-
-  /* page breaks */
-  #projects, #org, #achievements { break-before: page; }
-
-  /* colours → print-friendly */
-  .project-card, .org-card, .edu-card, .highlight-item,
-  .achievement-card, .skill-card, .timeline-body, .powerbi-wrapper {
-    background: #f9f9f9 !important;
-    border-color: #ddd !important;
-    box-shadow: none !important;
-  }
-  .powerbi-header, .powerbi-footer, .powerbi-desc { border-color: #ddd !important; }
-  .section-title, .project-title, .org-title, .edu-degree, .timeline-title { color: #111 !important; }
-  .project-desc, .org-bullets li, .about-text p, .timeline-body ul li { color: #444 !important; }
-  .powerbi-grid { grid-template-columns: 1fr 1fr; gap: .5rem; }
-  .projects-grid { grid-template-columns: 1fr 1fr; gap: .5rem; }
-  .org-grid { grid-template-columns: 1fr 1fr; gap: .5rem; }
-  .achievements-grid { grid-template-columns: 1fr 1fr; gap: .4rem; }
-  .skills-section-grid { grid-template-columns: repeat(4,1fr); gap: .4rem; }
-  .contact-section { padding: 1.5rem; break-inside: avoid; }
-
-  /* teal accent → dark for print */
-  .teal, .section-label, .timeline-org, .org-place, .edu-school { color: #1a7a5e !important; }
-  .project-tag.teal, .hero-tag.t1 { background: #e0f5ee !important; color: #1a7a5e !important; }
-  .project-tag.gold, .hero-tag.t2 { background: #fdf3e0 !important; color: #8a6020 !important; }
-  .project-tag.purple, .hero-tag.t3 { background: #f0e8ff !important; color: #6b3fca !important; }
-  .section-label::after { background: #1a7a5e !important; }
+  nav,.nav-mobile,#progress-bar,.theme-toggle,.pdf-btn,.nav-burger,.pdf-toast,.modal-overlay{display:none!important}
+  body{background:#fff!important;color:#111!important;font-size:11pt}
+  .section{padding:1.5rem 1rem;break-inside:avoid}
+  .divider{background:#ddd!important;margin:0}
+  .hero{min-height:auto;padding:2rem 1rem 1rem;flex-direction:row;gap:1.5rem}
+  .hero-bg{display:none}
+  .hero-name{font-size:2.4rem}
+  .hero-photo{width:120px;height:160px;border-radius:12px}
+  .hero-stats-row{gap:.4rem}
+  .stat-card{padding:.5rem .6rem;border-left-width:2px;background:#f5f5f5;border-color:#ccc}
+  .stat-number{font-size:1rem;color:#333!important}
+  .stat-label{font-size:.55rem}
+  .timeline-item,.project-card,.org-card,.reveal{opacity:1!important;transform:none!important}
+  .powerbi-frame-wrap{display:none}
+  .powerbi-fallback{display:none}
+  #projects,#org,#achievements{break-before:page}
+  .project-card,.org-card,.edu-card,.highlight-item,.achievement-card,.skill-card,.timeline-body,.powerbi-wrapper{background:#f9f9f9!important;border-color:#ddd!important;box-shadow:none!important}
+  .powerbi-header,.powerbi-footer,.powerbi-desc{border-color:#ddd!important}
+  .section-title,.project-title,.org-title,.edu-degree,.timeline-title{color:#111!important}
+  .project-desc,.org-bullets li,.about-text p,.timeline-body ul li{color:#444!important}
+  .powerbi-grid{grid-template-columns:1fr 1fr;gap:.5rem}
+  .projects-grid{grid-template-columns:1fr 1fr;gap:.5rem}
+  .org-grid{grid-template-columns:1fr 1fr;gap:.5rem}
+  .achievements-grid{grid-template-columns:1fr 1fr;gap:.4rem}
+  .skills-section-grid{grid-template-columns:repeat(4,1fr);gap:.4rem}
+  .contact-section{padding:1.5rem;break-inside:avoid}
+  .teal,.section-label,.timeline-org,.org-place,.edu-school{color:#1a7a5e!important}
+  .section-label::after{background:#1a7a5e!important}
 }
 
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
 @media(max-width:900px){
   .hero{flex-direction:column;padding:6rem 5% 4rem;gap:2.5rem;align-items:flex-start}
   .hero-right{width:100%;flex-direction:row;align-items:flex-start;flex-wrap:wrap;gap:1.2rem}
@@ -446,7 +500,6 @@ footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;b
 
 <div id="progress-bar"></div>
 
-<!-- PDF export toast notification -->
 <div class="pdf-toast hidden" id="pdfToast">
   <span class="pdf-toast-dot"></span>
   <span>Preparing PDF… Use "Save as PDF" in the print dialog.</span>
@@ -489,14 +542,8 @@ footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;b
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <!-- PDF export button -->
     <button class="pdf-btn" onclick="exportPDF()" title="Export as PDF">
-      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-        <polyline points="14 2 14 8 20 8"/>
-        <line x1="12" y1="12" x2="12" y2="18"/>
-        <polyline points="9 15 12 18 15 15"/>
-      </svg>
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="12" x2="12" y2="18"/><polyline points="9 15 12 18 15 15"/></svg>
       <span>PDF</span>
     </button>
     <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
@@ -675,16 +722,12 @@ footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;b
     <div class="proj-category-line"></div>
   </div>
 
-  <!-- ══ POWER BI — 2-COLUMN GRID ══ -->
   <div class="powerbi-grid">
-
-    <!-- Dashboard PT Unilever -->
     <div class="powerbi-wrapper reveal">
       <div class="powerbi-header">
         <div class="powerbi-title"><span class="powerbi-dot"></span>IT Performance Dashboard — PT Unilever</div>
         <span class="powerbi-badge">LIVE · Power BI</span>
       </div>
-      <!-- DESCRIPTION -->
       <div class="powerbi-desc">
         <strong>IT Balanced Scorecard (IT-BSC) dashboard</strong> for monitoring and evaluating Unilever's IT performance across 4 perspectives: Financial, Customer, Internal Process, and Learning & Growth. Built with dummy data for academic simulation. <strong>Top 3 Best Dashboard + HaKI registration.</strong>
       </div>
@@ -701,36 +744,17 @@ footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;b
       </div>
     </div>
 
-    <!-- Dashboard MCCI — WITH MODULE LINKS -->
     <div class="powerbi-wrapper reveal">
       <div class="powerbi-header">
         <div class="powerbi-title"><span class="powerbi-dot"></span>IT-Helpdesk Dashboard — MCCI</div>
         <span class="powerbi-badge">LIVE · Power BI</span>
       </div>
-      <!-- DESCRIPTION + MODULE LINKS -->
       <div class="powerbi-desc">
         Real-time <strong>IT Helpdesk performance dashboard</strong> for PT Merak Chemical Indonesia's IT division. Tracks ticket volume, resolution time, and SLA compliance. Accompanied by 2 training modules for intern onboarding.
         <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.65rem">
           <span style="font-size:.72rem;color:var(--muted);font-family:'DM Mono',monospace;align-self:center">📘 Modules:</span>
-          <!-- 🔽 GANTI link di href dengan link Drive modul kamu -->
-          <a href="https://www.canva.com/design/DAG9gXEenjs/kpVyuE6OHIC11_LXhD1APA/view?utm_content=DAG9gXEenjs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he5abc42837" target="_blank" class="module-link">
-          <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-            <polyline points="15 3 21 3 21 9"/>
-            <line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-
-          Modul 1 — Power BI Intro
-        </a>
-        <a href="https://www.canva.com/design/DAG9mM6GBMs/xknntPtKiv26YzNCl03hLA/view?utm_content=DAG9mM6GBMs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h47fcaa11ab" target="_blank" class="module-link">
-        <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-          <polyline points="15 3 21 3 21 9"/>
-          <line x1="10" y1="14" x2="21" y2="3"/>
-        </svg>
-
-        Modul 2 — Dashboard Build
-      </a>
+          <a href="https://www.canva.com/design/DAG9gXEenjs/kpVyuE6OHIC11_LXhD1APA/view?utm_content=DAG9gXEenjs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he5abc42837" target="_blank" class="module-link"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Modul 1 — Power BI Intro</a>
+          <a href="https://www.canva.com/design/DAG9mM6GBMs/xknntPtKiv26YzNCl03hLA/view?utm_content=DAG9mM6GBMs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h47fcaa11ab" target="_blank" class="module-link"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Modul 2 — Dashboard Build</a>
         </div>
       </div>
       <div class="powerbi-frame-wrap">
@@ -744,10 +768,8 @@ footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;b
         </div>
       </div>
     </div>
+  </div>
 
-  </div><!-- /powerbi-grid -->
-
-  <!-- Other data projects -->
   <div class="projects-grid">
     <div class="project-card c-teal">
       <div class="project-card-body">
@@ -756,9 +778,7 @@ footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;b
         <p class="project-desc">Built an end-to-end ELT pipeline using Python, PostgreSQL, and DBeaver. Designed a star schema data warehouse and created SQL-based analytics with business insight visualizations.</p>
         <div class="project-chips"><span class="chip">Python</span><span class="chip">PostgreSQL</span><span class="chip">DBeaver</span><span class="chip">Star Schema</span><span class="chip">SQL</span></div>
       </div>
-      <div class="project-links">
-        <a href="https://drive.google.com/file/d/1eIa3DYTLsGer03an8x1LfM6zOVwytXWW/view?usp=drive_link" target="_blank" class="project-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Project</a>
-      </div>
+      <div class="project-links"><a href="https://drive.google.com/file/d/1eIa3DYTLsGer03an8x1LfM6zOVwytXWW/view?usp=drive_link" target="_blank" class="project-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Project</a></div>
     </div>
     <div class="project-card c-teal">
       <div class="project-card-body">
@@ -767,17 +787,7 @@ footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;b
         <p class="project-desc">Conducted SEM-PLS analysis using SmartPLS for agricultural data modeling. Evaluated outer and inner models through reliability, validity, HTMT, SRMR, R², and path coefficient analysis.</p>
         <div class="project-chips"><span class="chip">SmartPLS</span><span class="chip">SEM-PLS</span><span class="chip">Statistical Modeling</span><span class="chip">R²</span></div>
       </div>
-      <div class="project-links">
-  <a href="https://drive.google.com/file/d/1wWplZzG2OKkmf-aZ5v631fxa4kHo94Ue/view?usp=drive_link" target="_blank" class="project-link">
-    <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-      <polyline points="15 3 21 3 21 9"/>
-      <line x1="10" y1="14" x2="21" y2="3"/>
-    </svg>
-
-    View Report
-  </a>
-</div>
+      <div class="project-links"><a href="https://drive.google.com/file/d/1wWplZzG2OKkmf-aZ5v631fxa4kHo94Ue/view?usp=drive_link" target="_blank" class="project-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Report</a></div>
     </div>
     <div class="project-card c-teal">
       <div class="project-card-body">
@@ -786,9 +796,7 @@ footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;b
         <p class="project-desc">Processed and merged national school datasets from Kaggle, BPS, and Kemdikbud. Built an Excel dashboard with pivot tables using the 6 Steps of Data Storytelling framework.</p>
         <div class="project-chips"><span class="chip">Excel</span><span class="chip">Pivot Table</span><span class="chip">Data Storytelling</span><span class="chip">Kaggle</span></div>
       </div>
-      <div class="project-links">
-        <a href="https://drive.google.com/file/d/1tKDA-U7i0ZAjd1aaPXLfQh6ogCUT0WVG/view?usp=drive_link" target="_blank" class="project-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Report</a>
-      </div>
+      <div class="project-links"><a href="https://drive.google.com/file/d/1tKDA-U7i0ZAjd1aaPXLfQh6ogCUT0WVG/view?usp=drive_link" target="_blank" class="project-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Report</a></div>
     </div>
   </div>
 
@@ -804,9 +812,7 @@ footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;b
         <p class="project-desc">Coordinated a team of 5 in developing a multi-year IS/IT strategic plan to support organizational digital transformation, covering enterprise architecture and IT roadmap.</p>
         <div class="project-chips"><span class="chip">Enterprise Architecture</span><span class="chip">IT Roadmap</span><span class="chip">Team Coordinator</span></div>
       </div>
-      <div class="project-links">
-        <a href="https://drive.google.com/file/d/1npJrfKTdM1N9rkueyfBA2YaMcUqsW0xD/view?usp=drive_link" target="_blank" class="project-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Document</a>
-      </div>
+      <div class="project-links"><a href="https://drive.google.com/file/d/1npJrfKTdM1N9rkueyfBA2YaMcUqsW0xD/view?usp=drive_link" target="_blank" class="project-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Document</a></div>
     </div>
     <div class="project-card c-gold">
       <div class="project-card-body">
@@ -815,9 +821,7 @@ footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;b
         <p class="project-desc">Led analysis of 20+ IT assets, identified 15+ security risks, and developed mitigation controls and risk treatment recommendations based on likelihood & impact.</p>
         <div class="project-chips"><span class="chip">Risk Framework</span><span class="chip">Notion</span><span class="chip">IT Security</span></div>
       </div>
-      <div class="project-links">
-        <a href="https://cloudy-helium-275.notion.site/Discovery-Project-Report-21e303c8dfc880c2ab3ee1e3b98cbaaf" target="_blank" class="project-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Open Notion</a>
-      </div>
+      <div class="project-links"><a href="https://cloudy-helium-275.notion.site/Discovery-Project-Report-21e303c8dfc880c2ab3ee1e3b98cbaaf" target="_blank" class="project-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Open Notion</a></div>
     </div>
     <div class="project-card c-gold">
       <div class="project-card-body">
@@ -826,9 +830,7 @@ footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;b
         <p class="project-desc">Implemented Scrum to redesign branding and digital marketing strategy — from logo redesign to Instagram content strategy.</p>
         <div class="project-chips"><span class="chip">Scrum</span><span class="chip">Branding</span><span class="chip">Digital Marketing</span></div>
       </div>
-      <div class="project-links">
-        <a href="https://drive.google.com/file/d/1wIYuqjAUUyY70GXGJQh0EIlQsBPm9t33/view?usp=drive_link" target="_blank" class="project-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Project</a>
-      </div>
+      <div class="project-links"><a href="https://drive.google.com/file/d/1wIYuqjAUUyY70GXGJQh0EIlQsBPm9t33/view?usp=drive_link" target="_blank" class="project-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Project</a></div>
     </div>
   </div>
 
@@ -886,9 +888,7 @@ footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;b
         <p class="project-desc">Redesigned the MCCI corporate website using Figma. Conducted user needs analysis, built new wireframes, and improved navigation flow.</p>
         <div class="project-chips"><span class="chip">Figma</span><span class="chip">UI Redesign</span><span class="chip">Corporate Web</span></div>
       </div>
-      <div class="project-links">
-        <a href="https://www.figma.com/proto/ZKYxIP2S2QoTS10R7nfChj/UI-WEB-MCCI-NEW?page-id=0%3A1&node-id=34-985&viewport=460%2C401%2C0.02&t=x0MfTJEKU0FxdgAz-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=34%3A985" target="_blank" class="project-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Figma Design</a>
-      </div>
+      <div class="project-links"><a href="https://www.figma.com/proto/ZKYxIP2S2QoTS10R7nfChj/UI-WEB-MCCI-NEW?page-id=0%3A1&node-id=34-985&viewport=460%2C401%2C0.02&t=x0MfTJEKU0FxdgAz-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=34%3A985" target="_blank" class="project-link"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Figma Design</a></div>
     </div>
   </div>
 </section>
@@ -896,57 +896,156 @@ footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;b
 <div class="divider"></div>
 
 <!-- ORGANISATIONS -->
+<!--
+  HOW TO ADD OUTPUT LINKS:
+  Inside .org-outputs, add <a> tags with class "org-output-link".
+  Use onclick="event.stopPropagation()" so clicking links doesn't open the photo gallery.
+  Icon options:
+    📰 article   ▶️ YouTube   🔗 general link   📄 document   🌐 website
+-->
 <section class="section" id="org">
   <div class="section-label">05 — Organizations & Committees</div>
   <div class="section-title">Organizations & Committees</div>
   <div class="org-grid">
 
+    <!-- VICE HEAD INTERNAL -->
     <div class="org-card has-gallery" onclick="openGallery({title:'Vice Head Internal — HMSI ITS',slides:[{img:'https://drive.google.com/thumbnail?id=1XaH144nsevLcx-Ar53Xb5YOnWZfege9s&sz=w1000',label:'Vice Head Internal HMSI',link:'https://drive.google.com/file/d/1XaH144nsevLcx-Ar53Xb5YOnWZfege9s/view?usp=drive_link'},{img:'https://drive.google.com/thumbnail?id=1VrAvZ6dSx3QjZDkEzCgAH-XVfvPoU3DG&sz=w1000',label:'Welcome Party Fungsionary',link:'https://drive.google.com/file/d/1VrAvZ6dSx3QjZDkEzCgAH-XVfvPoU3DG/view?usp=drive_link'}]})">
       <div class="org-card-top"><div class="org-role-type leader">Leader</div><span class="gallery-hint">📷 Photos</span></div>
       <div class="org-title">Vice Head Internal — HMSI ITS</div>
       <div class="org-place">Information Systems Student Association — ITS</div>
       <div class="org-date">April 2026 – Present</div>
-      <ul class="org-bullets"><li>Coordinated 5 internal departments (100+ members) to ensure all work programs run on schedule</li><li>Designed staff performance evaluation system and skill upgrading programs</li></ul>
+      <ul class="org-bullets">
+        <li>Coordinated 5 internal departments (100+ members) to ensure all work programs run on schedule</li>
+        <li>Designed staff performance evaluation system and skill upgrading programs</li>
+      </ul>
+      <!-- no output links yet for this one -->
     </div>
 
+    <!-- HRD -->
     <div class="org-card has-gallery" onclick="openGallery({title:'Human Resource Development — HMSI ITS',slides:[{img:'https://drive.google.com/thumbnail?id=1mE_P8VxG9r6BmmOP3edBgjxQTvku6EEv&sz=w1000',label:'Program kaderisasi Manage',link:'https://drive.google.com/file/d/1mE_P8VxG9r6BmmOP3edBgjxQTvku6EEv/view?usp=drive_link'},{img:'https://drive.google.com/thumbnail?id=11MVV8Ag27ZTSd0kv5p4QVmzOGdw2Rbcu&sz=w1000',label:'Best Staff April 2025',link:'https://drive.google.com/file/d/11MVV8Ag27ZTSd0kv5p4QVmzOGdw2Rbcu/view?usp=drive_link'},{img:'https://drive.google.com/thumbnail?id=14GWCjRebZfZZh47vqoTyL3nN_7ea5tMS&sz=w1000',label:'Certificate',link:'https://drive.google.com/file/d/14GWCjRebZfZZh47vqoTyL3nN_7ea5tMS/view?usp=drive_link'}]})">
       <div class="org-card-top"><div class="org-role-type leader">Leader</div><span class="gallery-hint">📷 Photos</span></div>
       <div class="org-title">Human Resource Development — HMSI ITS</div>
       <div class="org-place">HRD Division · HMSI Niskalarasi</div>
       <div class="org-date">January 2025 – November 2025</div>
-      <ul class="org-bullets"><li>PIC for cadre development program "Manage" — 80+ committee, 200+ participants</li><li>Best Staff HRD HMSI Niskalarasi — April 2025 ⭐</li></ul>
+      <ul class="org-bullets">
+        <li>PIC for cadre development program "Manage" — 80+ committee, 200+ participants</li>
+        <li>Best Staff HRD HMSI Niskalarasi — April 2025 ⭐</li>
+      </ul>
+      <div class="org-outputs" onclick="event.stopPropagation()">
+        <a href="https://hmsi-niskalarasi.vercel.app/" target="_blank" class="org-output-link">
+  <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+    <polyline points="15 3 21 3 21 9"/>
+    <line x1="10" y1="14" x2="21" y2="3"/>
+  </svg>
+
+  Hall Of Fame Niskalarasi
+</a>
+      </div>
     </div>
 
+    <!-- MABACUP -->
     <div class="org-card has-gallery" onclick="openGallery({title:'Vice Head Main Event — MABACUP 2024',slides:[{img:'https://drive.google.com/thumbnail?id=1wMx79wcZakr4R4B6TOaXtHoXUGAgGzTW&sz=w1000',label:'Certificate — Vice Head Main Event',link:'https://drive.google.com/file/d/1wMx79wcZakr4R4B6TOaXtHoXUGAgGzTW/view?usp=drive_link'},{img:'https://drive.google.com/thumbnail?id=1SDCQKFF4AdzEf_OznWzG_XJgxMhqx3ro&sz=w1000',label:'Vice Head Main Event — MABACUP 2024',link:'https://drive.google.com/file/d/1SDCQKFF4AdzEf_OznWzG_XJgxMhqx3ro/view?usp=drive_link'}]})">
       <div class="org-card-top"><div class="org-role-type leader">Leader</div><span class="gallery-hint">📷 Photos</span></div>
       <div class="org-title">Vice Head Main Event — MABACUP 2024</div>
       <div class="org-place">ITS</div>
       <div class="org-date">July 2024 – December 2024</div>
-      <ul class="org-bullets"><li>Managed 9 competitive events attended by 6,000 new students</li><li>Initiated "The Stellar War" — an academic live-simulation competition</li></ul>
+      <ul class="org-bullets">
+        <li>Managed 9 competitive events attended by 6,000 new students</li>
+        <li>Initiated "The Stellar War" — an academic live-simulation competition</li>
+      </ul>
+      <!-- 🔽 GANTI href dengan link YouTube MABACUP yang benar -->
+      <div class="org-outputs" onclick="event.stopPropagation()">
+        <a href="https://youtu.be/6Y3GqXMgiqk?si=AIwSr3fa4xYpesdE" target="_blank" class="org-output-link">
+  <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+    <polyline points="15 3 21 3 21 9"/>
+    <line x1="10" y1="14" x2="21" y2="3"/>
+  </svg>
+
+  ▶️ MABACUP Stellar War 2024
+</a>
+      </div>
     </div>
 
+    <!-- ITS ONLINE -->
     <div class="org-card has-gallery" onclick="openGallery({title:'Reporter — ITS Online',slides:[{img:'https://drive.google.com/thumbnail?id=1vxw4HTyqqCb9_lMeYod8z43HCUxNK3VM&sz=w1000',label:'On Duty Reporter — ITS Online',link:'https://drive.google.com/file/d/1vxw4HTyqqCb9_lMeYod8z43HCUxNK3VM/view?usp=drive_link'},{img:'https://drive.google.com/thumbnail?id=1MsP8dnZdBDIakSMVTg8EXip9zlSjyi9J&sz=w1000',label:'Reporter of The Month',link:'https://drive.google.com/file/d/1MsP8dnZdBDIakSMVTg8EXip9zlSjyi9J/view?usp=drive_link'}]})">
       <div class="org-card-top"><div class="org-role-type member">Member</div><span class="gallery-hint">📷 Photos</span></div>
       <div class="org-title">Reporter — ITS Online</div>
       <div class="org-place">Official Media of ITS</div>
       <div class="org-date">December 2023 – Present</div>
-      <ul class="org-bullets"><li>Covered visits of the Deputy Minister and Minister of Higher Education to ITS</li><li>Reporter of The Month — March & April 2025</li></ul>
+      <ul class="org-bullets">
+        <li>Covered visits of the Deputy Minister and Minister of Higher Education to ITS</li>
+        <li>Reporter of The Month — March & April 2025</li>
+      </ul>
+      <!--
+        🔽 GANTI href dengan link artikel berita asli.
+           Duplikat / tambah tag <a> untuk artikel ke-2 dan ke-3.
+      -->
+      <div class="org-outputs" onclick="event.stopPropagation()">
+  <a href="https://www.its.ac.id/news/bangkitnya-film-animasi-indonesia-jumbo-cetak-sejarah/" target="_blank" class="org-output-link">
+    <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+      <polyline points="15 3 21 3 21 9"/>
+      <line x1="10" y1="14" x2="21" y2="3"/>
+    </svg>
+
+    📰 Opini Jumbo
+  </a>
+        <a href="https://www.its.ac.id/news/hivi-ciptakan-euforia-untuk-ribuan-maba-di-gerex-2025/" target="_blank" class="org-output-link">
+  <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+    <polyline points="15 3 21 3 21 9"/>
+    <line x1="10" y1="14" x2="21" y2="3"/>
+  </svg>
+
+  📰 News Hivi!
+</a>
+       <a href="https://www.its.ac.id/news/kemdiktisaintek-dukung-hilirisasi-riset-its-menuju-dampak-ekonomi-nyata/" target="_blank" class="org-output-link">
+  <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+    <polyline points="15 3 21 3 21 9"/>
+    <line x1="10" y1="14" x2="21" y2="3"/>
+  </svg>
+
+  📰 News Kemdiktisaintek!
+</a>
+      </div>
     </div>
 
+    <!-- IS CONFERENCE -->
     <div class="org-card has-gallery" onclick="openGallery({title:'Event Runner — International IS Conference',slides:[{img:'https://drive.google.com/thumbnail?id=1ZzlRWroFaE4R9wXbj83L1vJ932o3tod-&sz=w1000',label:'International IS Conference',link:'https://drive.google.com/file/d/1ZzlRWroFaE4R9wXbj83L1vJ932o3tod-/view?usp=drive_link'}]})">
       <div class="org-card-top"><div class="org-role-type committee">Committee</div><span class="gallery-hint">📷 Photos</span></div>
       <div class="org-title">Event Runner — International IS Conference</div>
       <div class="org-place">Bali, Indonesia</div>
       <div class="org-date">April 2025 – September 2025</div>
-      <ul class="org-bullets"><li>Coordinated protocol support for 2 international keynote speakers</li></ul>
+      <ul class="org-bullets">
+        <li>Coordinated protocol support for 2 international keynote speakers</li>
+      </ul>
     </div>
 
+    <!-- GERIGI PAPER MOB -->
     <div class="org-card has-gallery" onclick="openGallery({title:'Conceptor Paper Mob — GERIGI ITS 2024',slides:[{img:'https://drive.google.com/thumbnail?id=1L1qgIPfYsIWxFM9rkxiFvUpvEoLO7yLL&sz=w1000',label:'Paper Mob GERIGI ITS 2024 · MURI Record',link:'https://drive.google.com/file/d/1L1qgIPfYsIWxFM9rkxiFvUpvEoLO7yLL/view?usp=drive_link'},{img:'https://drive.google.com/thumbnail?id=19-IhJBXvIh_jxzZBzrKJxaIRrJ8NyZG1&sz=w1000',label:'Certificate — GERIGI ITS 2024',link:'https://drive.google.com/file/d/19-IhJBXvIh_jxzZBzrKJxaIRrJ8NyZG1/view?usp=drive_link'}]})">
       <div class="org-card-top"><div class="org-role-type committee">Committee</div><span class="gallery-hint">📷 Photos</span></div>
       <div class="org-title">Conceptor Paper Mob — GERIGI ITS 2024</div>
       <div class="org-place">Institut Teknologi Sepuluh Nopember</div>
       <div class="org-date">2024</div>
-      <ul class="org-bullets"><li>Conceptor team for paper mob for 6,000+ new students</li><li>Earned the MURI Record — "Largest Paper Mob by New Students"</li></ul>
+      <ul class="org-bullets">
+        <li>Conceptor team also MC paper mob for 6,000+ new students</li>
+        <li>Earned the MURI Record — "Largest Paper Mob by New Students"</li>
+      </ul>
+      <!-- 🔽 GANTI href dengan link YouTube GERIGI / Paper Mob yang benar -->
+      <div class="org-outputs" onclick="event.stopPropagation()">
+       <a href="https://www.youtube.com/watch?v=OP_Hz81K4oU&t=78s" target="_blank" class="org-output-link">
+  <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+    <polyline points="15 3 21 3 21 9"/>
+    <line x1="10" y1="14" x2="21" y2="3"/>
+  </svg>
+
+  ▶️ Paper Mob MURI!
+</a>
+      </div>
     </div>
 
   </div>
@@ -993,7 +1092,6 @@ footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;b
     <div class="achievement-card"><div class="achievement-icon">🥇</div><div class="achievement-text"><strong>1st Place — National Science Olympiad, Economics</strong><span>Madiun City</span></div></div>
     <div class="achievement-card"><div class="achievement-icon">🥇</div><div class="achievement-text"><strong>1st Place — Poetry Musicalization</strong><span>East Java Language Center</span></div></div>
     <div class="achievement-card"><div class="achievement-icon">🎤</div><div class="achievement-text"><strong>2nd Runner-Up — Kharisma Band Festival 2023</strong><span>Vocalist Category</span></div></div>
-
   </div>
 </section>
 
@@ -1044,7 +1142,6 @@ footer{padding:1.8rem 5%;text-align:center;color:var(--muted);font-size:.78rem;b
   <p>© 2026 Nabila Rahadatul Aisy Koestriyaningrum · Surabaya, Indonesia</p>
 </footer>
 
-<!-- ══════════ SCRIPT ══════════ -->
 <script>
 /* scroll progress */
 window.addEventListener('scroll', () => {
@@ -1073,7 +1170,10 @@ function toggleTheme() {
 }
 try {
   const saved = localStorage.getItem('theme');
-  if (saved) { document.documentElement.setAttribute('data-theme', saved); document.getElementById('themeBtn').textContent = saved === 'light' ? '☀️' : '🌙'; }
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+    document.getElementById('themeBtn').textContent = saved === 'light' ? '☀️' : '🌙';
+  }
 } catch(e){}
 
 /* mobile nav */
@@ -1089,23 +1189,15 @@ function closeMenu() {
 }
 window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMenu(); });
 
-/* ══ PDF EXPORT ══
-   Uses browser's built-in print dialog → Save as PDF.
-   The @media print styles above optimise the layout for paper/PDF.
-   Tip: in the print dialog, set margins to "None" or "Minimal"
-   and enable "Background graphics" for best result.
-*/
+/* PDF export */
 function exportPDF() {
   const toast = document.getElementById('pdfToast');
   toast.classList.remove('hidden');
-  // switch to light theme for cleaner print
   const html = document.documentElement;
   const prevTheme = html.getAttribute('data-theme');
   html.setAttribute('data-theme', 'light');
-  // slight delay so toast renders, then print
   setTimeout(() => {
     window.print();
-    // restore theme after dialog closes
     setTimeout(() => {
       html.setAttribute('data-theme', prevTheme);
       document.getElementById('themeBtn').textContent = prevTheme === 'light' ? '☀️' : '🌙';
